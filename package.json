@@ -1,0 +1,30 @@
+{
+  "_comment": "this project is not a node.js one, package.json is just used to define some metadata",
+  "scripts": {
+    "cm": "git cz",
+    "lint": "lab ci lint",
+    "secrets": "gitleaks --verbose --repo-path=. --config=.gitleaks.toml --verbose --pretty --redact"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-push": "npm run secrets"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "latest",
+    "@commitlint/config-conventional": "latest",
+    "commitizen": "latest",
+    "husky": "latest"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+# Always ignore files
+.DS_Store
+.vscode
+*.sublime-*
+*.lock
+*.txt
+.idea/*
+
+# NPM files
+node_modules
+npm-debug.log
+package-lock.json
+
+# Yarn files
+yarn.lock
+yarn-error.log

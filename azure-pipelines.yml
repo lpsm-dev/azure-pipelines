@@ -1,0 +1,65 @@
+# Starter pipeline
+# Mininal project with default and build stages.
+#
+
+# Define the global runner
+pool:
+  vmImage: 'Ubuntu-20.04'
+
+# Pull Request
+pr: none
+
+# Triggers rules only in branches
+trigger:
+  branches:
+    include:
+    - main
+    - develop
+    - feature/*
+
+# Define global variables
+variables:
+- name: tag
+  value: latest
+- name: default
+  value: azure-pipeline-demo
+
+# Define pipeline stages
+stages:
+# -------------------------------
+- stage: Default
+  displayName: Default
+  jobs:
+  - job: Default
+    displayName: Simple echo message
+    pool:
+      vmImage: 'Ubuntu-20.04'
+    steps:
+    - script: echo Hello, world - $(default)!
+      displayName: 'Run a one-line script'
+# -------------------------------
+- stage: Build
+  displayName: Build image
+  variables:
+    DOCKER_BUILDKIT: 1
+  jobs:
+  - job: Build
+    displayName: Build
+    steps:
+    - task: Docker@2
+      displayName: Build an image
+      inputs:
+        command: build
+        dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
+        tags: |
+          $(tag)
+# -------------------------------
+- stage: Deploy
+  displayName: Deploy
+  jobs:
+  - job: Deploy
+    displayName: Deploy Kubernetes
+    steps:
+    - script: |
+        echo "Deploy to Kubernetes"
+      displayName: Deploy Kubernetes
