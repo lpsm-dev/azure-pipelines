@@ -3,12 +3,11 @@
   "scripts": {
     "cm": "git cz",
     "lint": "lab ci lint",
-    "secrets": "gitleaks --verbose --repo-path=. --config=.gitleaks.toml --verbose --pretty --redact"
+    "secrets": "gitleaks --path=. --config-path=.gitleaks.toml --verbose"
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-push": "npm run secrets"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "commitlint": {

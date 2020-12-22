@@ -2,9 +2,12 @@
 # Mininal project with default and build stages.
 #
 
+# Define a pipeline name
+name: $[variables['branchName']]
+
 # Define the global runner
 pool:
-  vmImage: 'Ubuntu-20.04'
+  vmImage: 'Ubuntu-18.04'
 
 # Pull Request
 pr: none
@@ -14,52 +17,132 @@ trigger:
   branches:
     include:
     - main
+    - stage
     - develop
     - feature/*
+  paths:
+    include:
+    - '*'
+    exclude:
+    - 'docs/*'
+
+# Pipeline Resources
+resources:
+- repo: self
 
 # Define global variables
 variables:
-- name: tag
-  value: latest
-- name: default
-  value: azure-pipeline-demo
+  dockerRegistryServiceConnection: ''
+  imageRepository: '$(Build.Repository.Name)'
+  containerRegistry: ''
+  dockerfilePath: 'Dockerfile'
+  branchName: $[replace(variables['Build.SourceBranch'], 'refs/heads/', '')]
+  isProduction: $[eq(variables.branchName, 'main')]
+  isPreProduction: $[eq(variables.branchName, 'stage')]
+  isDevelop: $[eq(variables.branchName, 'develop')]
+  isFeature: $[contains(variables.branchName, 'feature')]
 
 # Define pipeline stages
 stages:
 # -------------------------------
-- stage: Default
-  displayName: Default
-  jobs:
-  - job: Default
-    displayName: Simple echo message
-    pool:
-      vmImage: 'Ubuntu-20.04'
-    steps:
-    - script: echo Hello, world - $(default)!
-      displayName: 'Run a one-line script'
-# -------------------------------
 - stage: Build
-  displayName: Build image
+  displayName: Build
   variables:
     DOCKER_BUILDKIT: 1
   jobs:
-  - job: Build
-    displayName: Build
+  # -------------------------------
+  - job: Build_Production
+    displayName: Docker Build Production
+    condition: and(succeeded(), eq(variables.isProduction, true))
     steps:
     - task: Docker@2
-      displayName: Build an image
+      displayName: Build and push an image to container registry
       inputs:
-        command: build
-        dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
+        command: buildAndPush
+        repository: $(imageRepository)
+        dockerfile: $(dockerfilePath)
+        containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
-          $(tag)
+          $(Build.SourceVersion)
+          $(branchName)
+          latest
+  # -------------------------------
+  - job: Build_Pre_Production
+    displayName: Docker Build Pre Production
+    condition: and(succeeded(), eq(variables.isPreProduction, true))
+    steps:
+    - task: Docker@2
+      displayName: Build and push an image to container registry
+      inputs:
+        command: buildAndPush
+        repository: $(imageRepository)
+        dockerfile: $(dockerfilePath)
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          $(Build.SourceVersion)
+          $(branchName)
+  # -------------------------------
+  - job: Build_Develop
+    displayName: Docker Build Develop
+    condition: and(succeeded(), eq(variables.isDevelop, true))
+    steps:
+    - task: Docker@2
+      displayName: Build and push an image to container registry
+      inputs:
+        command: buildAndPush
+        repository: $(imageRepository)
+        dockerfile: $(dockerfilePath)
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          $(Build.SourceVersion)
+          $(branchName)
+  # -------------------------------
+  - job: Build_Feature
+    displayName: Docker Build Feature
+    condition: and(succeeded(), eq(variables.isFeature, true))
+    steps:
+    - task: Docker@2
+      displayName: Build and push an image to container registry
+      inputs:
+        command: buildAndPush
+        repository: $(imageRepository)
+        dockerfile: $(dockerfilePath)
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          $(Build.SourceVersion)
 # -------------------------------
 - stage: Deploy
   displayName: Deploy
+  # -------------------------------
   jobs:
-  - job: Deploy
-    displayName: Deploy Kubernetes
+  - job: Deploy_Production
+    displayName: Deploy Kubernetes Production
+    condition: and(succeeded(), eq(variables.isProduction, true))
     steps:
     - script: |
-        echo "Deploy to Kubernetes"
-      displayName: Deploy Kubernetes
+        echo "Deploy image $(Build.SourceVersion) to Kubernetes Production"
+      displayName: Deploy the image to Kubernetes
+  # -------------------------------
+  - job: Deploy_Pre_Production
+    displayName: Deploy Kubernetes Pre Production
+    condition: and(succeeded(), eq(variables.isPreProduction, true))
+    steps:
+    - script: |
+        echo "Deploy image $(Build.SourceVersion) to Kubernetes Pre Production"
+      displayName: Deploy the image to Kubernetes
+  # -------------------------------
+  - job: Deploy_Develop
+    displayName: Deploy Kubernetes Develop
+    condition: and(succeeded(), eq(variables.isDevelop, true))
+    steps:
+    - script: |
+        echo "Deploy image $(Build.SourceVersion) to Kubernetes Develop"
+      displayName: Deploy the image to Kubernetes
+  # -------------------------------
+  - job: Deploy_Feature
+    displayName: Deploy Kubernetes Feature
+    condition: and(succeeded(), eq(variables.isFeature, true))
+    steps:
+    - script: |
+        echo "Deploy image $(Build.SourceVersion) to Kubernetes Develop"
+      displayName: Deploy the image to Kubernetes
