@@ -65,6 +65,7 @@ this will make the templates in this repository available in the `lpmatos` names
 
 * [Agents](./docs/Agents.md)
 * [Concepts](./docs/Concepts.md)
+* [DevOps](./docs/DevOps.md)
 
 ## ➤ Features
 
