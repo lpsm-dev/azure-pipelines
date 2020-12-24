@@ -102,3 +102,29 @@ Praticadas em conjunto com a infraestrutura como código, a definição e a conf
 O monitoramento contínuo significa ter visibilidade total e em tempo real sobre o desempenho e a integridade de toda a pilha de aplicativos, desde a infraestrutura subjacente que está executando o aplicativo até os componentes de software de nível superior. Essa visibilidade consiste na coleta de telemetria e metadados, bem como na definição de alertas para condições predefinidas que merecem a atenção de um operador. A telemetria compreende dados de eventos e logs coletados de várias partes do sistema e armazenados em um local onde possam ser analisados e consultados.
 
 As equipes de alto desempenho de DevOps garantem a definição de alertas acionáveis e significativos e a coleta de uma telemetria abundante para que seja possível extrair insights de grandes quantidades de dados. Esses insights ajudam a equipe a mitigar problemas em tempo real e a ver como melhorar o aplicativo em ciclos de desenvolvimento futuros.
+
+## Ferramentas DevOps
+
+As equipes têm muitas ferramentas de DevOps para ajudá-las a implementar uma cultura de DevOps em sua organização. A maioria das equipes confia em várias ferramentas, criando cadeias de ferramentas personalizadas que atendem às suas necessidades específicas para cada fase do ciclo de vida do aplicativo. Embora adotar uma ferramenta ou tecnologia específica não seja o mesmo que adotar o DevOps, quando a cultura de DevOps está presente e os processos são definidos, as pessoas podem implementar e simplificar as práticas de DevOps se escolherem as ferramentas adequadas.
+
+## DevOps e a nuvem
+
+A adoção da nuvem transformou de maneira fundamental a maneira como as equipes estão criando, implantando e operando os aplicativos. Junto com a adoção de DevOps, as equipes agora têm mais oportunidades de aprimorar suas práticas e atender melhor os clientes.
+
+#### Agilidade na nuvem
+
+Com a capacidade de provisionar e configurar rapidamente ambientes de nuvem em várias regiões e com recursos ilimitados, as equipes ganham agilidade na implantação de seus aplicativos. Agora, em vez de precisar comprar, configurar e manter servidores físicos, as equipes criam ambientes complexos de nuvem em questão de minutos e encerram esses ambientes quando eles deixam de ser necessários.
+
+#### Kubernetes
+
+À medida que cada vez mais aplicativos usam a tecnologia de contêineres, o Kubernetes está se tornando a solução preferencial do setor para orquestrar contêineres em escala. Automatizar os processos de criação e implantação de contêineres via pipelines de CI/CD e monitorar esses contêineres na produção estão se tornando práticas essenciais na era do Kubernetes.
+
+#### Computação sem servidor
+
+Com a maior parte das sobrecargas de gerenciamento da infraestrutura transferida para o provedor de nuvem, as equipes podem se dedicar a seus aplicativos em vez da infraestrutura subjacente. A computação sem servidor possibilita executar aplicativos sem precisar configurar e manter servidores. Algumas opções reduzem a complexidade e o risco da implantação e das operações.
+
+## Considerações
+
+O DevOps não se limita a uma única função. Todos que participam de alguma das fases do ciclo de vida do aplicativo devem adotar a cultura de DevOps. No entanto, em algumas organizações, existem algumas pessoas ou equipes cujo foco exclusivo é habilitar a automação, definir práticas e implementar os pipelines de CI/CD. Às vezes, o título oficial dessas funções é engenheiro de DevOps ou especialista em DevOps.
+
+Ele é praticado em diferentes funções de uma organização e exige que várias delas colaborem estreitamente. Na maioria dos casos, as funções de DevOps incluem desenvolvimento, TI, operações, segurança e suporte.
