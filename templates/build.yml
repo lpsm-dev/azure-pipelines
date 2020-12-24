@@ -1,0 +1,71 @@
+parameters:
+- name: dockerServiceConnection
+  type: string
+
+stages:
+
+# **********************************************************
+# Stage - Build
+# **********************************************************
+
+- stage: Build
+  displayName: Build
+
+# **********************************************************
+# Jobs - Build Production
+# **********************************************************
+
+  jobs:
+  - job: Build_Production
+    displayName: Docker Build Production
+    condition: and(succeeded(), eq(variables.isProduction, true))
+    steps:
+    - task: Docker@2
+      displayName: Build and push the image to ACR
+      inputs:
+        command: buildAndPush
+        repository: $(imageRepository)
+        dockerfile: $(dockerfilePath)
+        containerRegistry: ${{ parameters.dockerServiceConnection }}
+        tags: |
+          $(Build.SourceVersion)
+          $(branchName)
+          latest
+
+# **********************************************************
+# Jobs - Build Stage
+# **********************************************************
+
+  - job: Build_Stage
+    displayName: Docker Build Stage
+    condition: and(succeeded(), eq(variables.isStage, true))
+    steps:
+    - task: Docker@2
+      displayName: Build and push the image to ACR
+      inputs:
+        command: buildAndPush
+        repository: $(imageRepository)
+        dockerfile: $(dockerfilePath)
+        containerRegistry: ${{ parameters.dockerServiceConnection }}
+        tags: |
+          $(Build.SourceVersion)
+          $(branchName)
+
+# **********************************************************
+# Jobs - Build Develop
+# **********************************************************
+
+  - job: Build_Develop
+    displayName: Docker Build Develop
+    condition: and(succeeded(), eq(variables.isDevelop, true))
+    steps:
+    - task: Docker@2
+      displayName: Build and push the image to ACR
+      inputs:
+        command: buildAndPush
+        repository: $(imageRepository)
+        dockerfile: $(dockerfilePath)
+        containerRegistry: ${{ parameters.dockerServiceConnection }}
+        tags: |
+          $(Build.SourceVersion)
+          $(branchName)

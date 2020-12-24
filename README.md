@@ -9,10 +9,11 @@
 ## ➤ Menu
 
 <p align="left">
-  <a href="#-description">Description</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-topics">Topics</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-features">Features</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-how-to-contribute">How to contribute</a>
+  <a href="#➤-description">Description</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#➤-topics">Topics</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#➤-features">Features</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#➤-references">References</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#➤-how-to-contribute">How to contribute</a>
 </p>
 
 ## ➤ Getting Started
@@ -47,6 +48,15 @@ Azure Pipelines combines continuous integration (CI) and continuous delivery (CD
   * Commitlint - Conventional Commits.
   * Git Hooks with Husky.
 
+## ➤ References
+
+* https://docs.microsoft.com/en-us/azure/devops/pipelines/repos/azure-repos-git
+* https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema
+* https://docs.microsoft.com/en-us/azure/devops/pipelines/process/templates
+* https://docs.microsoft.com/en-us/azure/devops/pipelines/repos/multi-repo-checkout
+* https://github.com/asottile/azure-pipeline-templates
+* https://stackoverflow.com/questions/57180038/how-to-reuse-yaml-templates-in-different-azure-devops-team-project
+
 ## ➤ How to contribute
 
 >
@@ -80,13 +90,13 @@ You must send the project to your GitHub after the modifications
 
 Hey!! If you like this project or if you find some bugs feel free to contact me in my channels:
 
-> 
+>
 > * Email: luccapsm@gmail.com
 > * Website: https://github.com/lpmatos
 > * Github: [@lpmatos](https://github.com/lpmatos)
 > * GitLab: [@lpmatos](https://gitlab.com/lpmatos)
 > * LinkedIn: [@luccapessoa](https://www.linkedin.com/in/luccapessoa/)
-> 
+>
 
 ## ➤ Show your support
 

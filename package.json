@@ -2,12 +2,12 @@
   "_comment": "this project is not a node.js one, package.json is just used to define some metadata",
   "scripts": {
     "cm": "git cz",
-    "lint": "lab ci lint",
-    "secrets": "gitleaks --path=. --config-path=.gitleaks.toml --verbose"
+    "secrets": "gitleaks --verbose --path=. --config-path=.gitleaks.toml"
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "post-commit": "bash githooks/pre-push/helm-lint"
     }
   },
   "commitlint": {

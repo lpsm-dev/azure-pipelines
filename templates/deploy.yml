@@ -1,0 +1,72 @@
+stages:
+
+# **********************************************************
+# Stage - Deploy
+# **********************************************************
+
+- stage: Deploy
+  displayName: Deploy
+
+# **********************************************************
+# Jobs - Deploy Production
+# **********************************************************
+
+  jobs:
+  - job: Deploy_Production
+    displayName: Deploy Kubernetes Production
+    condition: and(succeeded(), eq(variables.isProduction, true))
+    steps:
+    - script: |
+        echo "Deploy docker image $(Build.SourceVersion) to AKS Production Cluster"
+      displayName: Simple echo message
+
+    - task: Kubernetes@1
+      displayName: Deploy image to AKS
+      inputs:
+        command: set
+        connectionType: Kubernetes Service Connection
+        kubernetesServiceEndpoint: goodyear-aks-production
+        namespace: $(namespace.production)
+        arguments: image deployment/$(Build.Repository.Name) $(Build.Repository.Name)=$(containerRegistry)/$(Build.Repository.Name):$(Build.SourceVersion)
+
+# **********************************************************
+# Jobs - Deploy Stage
+# **********************************************************
+
+  - job: Deploy_Stage
+    displayName: Deploy Kubernetes Stage
+    condition: and(succeeded(), eq(variables.isStage, true))
+    steps:
+    - script: |
+        echo "Deploy docker image $(Build.SourceVersion) to AKS Stage Cluster"
+      displayName: Simple echo message
+
+    - task: Kubernetes@1
+      displayName: Deploy the image to AKS
+      inputs:
+        command: set
+        connectionType: Kubernetes Service Connection
+        kubernetesServiceEndpoint: goodyear-aks-stage
+        namespace: $(namespace.stage)
+        arguments: image deployment/$(Build.Repository.Name) $(Build.Repository.Name)=$(containerRegistry)/$(Build.Repository.Name):$(Build.SourceVersion)
+
+# **********************************************************
+# Jobs - Deploy Develop
+# **********************************************************
+
+  - job: Deploy_Develop
+    displayName: Deploy Kubernetes Develop
+    condition: and(succeeded(), eq(variables.isDevelop, true))
+    steps:
+    - script: |
+        echo "Deploy docker image $(Build.SourceVersion) to AKS Develop Cluster"
+      displayName: Simple echo message
+
+    - task: Kubernetes@1
+      displayName: Deploy the image to AKS
+      inputs:
+        command: set
+        connectionType: Kubernetes Service Connection
+        kubernetesServiceEndpoint: goodyear-aks-develop
+        namespace: $(namespace.develop)
+        arguments: image deployment/$(Build.Repository.Name) $(Build.Repository.Name)=$(containerRegistry)/$(Build.Repository.Name):$(Build.SourceVersion)

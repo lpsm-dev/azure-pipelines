@@ -1,4 +1,4 @@
-# Key concepts for new Azure Pipelines users
+# Conceitos chave para novos usuários do Azure Pipelines
 
 ## Agent
 

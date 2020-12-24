@@ -1,0 +1,8 @@
+variables:
+  imageRepository: '$(Build.Repository.Name)'
+  containerRegistry: 'goodyear.azurecr.io'
+  dockerfilePath: 'Dockerfile'
+  branchName: $[replace(variables['Build.SourceBranch'], 'refs/heads/', '')]
+  isProduction: $[eq(variables.branchName, 'main')]
+  isStage: $[eq(variables.branchName, 'stage')]
+  isDevelop: $[eq(variables.branchName, 'develop')]

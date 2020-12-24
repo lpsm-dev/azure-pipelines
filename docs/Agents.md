@@ -1,10 +1,8 @@
-# Azure Pipelines agents
+# Azure Pipelines Agents
 
-Para buildar o seu código ou fazer o implantar seu software usando o Azure Pipelines, você precisa de pelo menos um agente. Conforme você adiciona mais código e pessoas, eventualmente precisará de mais.
+Para buildar o seu código ou implantar seu software usando o Azure Pipelines, tudo que você precisa é de pelo menos um agent. Conforme o tempo passa e seu time vai evoluindo juntamente com o código, eventualmente você precisará de mais agents.
 
-Quando o pipeline é executado, o sistema começa um ou mais trabalhos. Um agente é uma infraestrutura de computação com software de agente instalado que executa uma tarefa por vez.
-
-Os trabalhos podem ser executados diretamente na máquina host do agente ou em um contêiner.
+Ao triggar o pipeline, o sistema começa um ou mais jobs. O agent é uma infraestrutura de computação com software que executa uma tarefa por vez. Os jobs podem ser executados diretamente na máquina host do agent ou em contêiner.
 
 ## Microsoft-hosted agents
 
@@ -103,6 +101,7 @@ Por exemplo, para executar tarefas que usam autenticação do Windows para acess
 No Windows, você deve considerar o uso de uma conta de serviço, como Serviço de Rede ou Serviço Local. Essas contas têm permissões restritas e suas senhas não expiram, o que significa que o agente requer menos gerenciamento ao longo do tempo.
 
 ## Perguntas frequentes
+
 ##### Os agentes auto-hospedados têm alguma vantagem de desempenho em relação aos agentes hospedados pela Microsoft?
 
 Se você usar um agente auto-hospedado, poderá executar compilações incrementais. Por exemplo, se você definir um pipeline que não limpa o repo e não executa uma compilação limpa, suas compilações normalmente serão executadas mais rapidamente. Ao usar um agente hospedado pela Microsoft, você não obtém esses benefícios porque o agente é destruído após a conclusão do pipeline de compilação ou liberação.
