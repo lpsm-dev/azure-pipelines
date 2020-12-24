@@ -1,3 +1,5 @@
+# A basic NGINX Dockerfile template
+
 ARG NGINX_VERSION=latest
 
 FROM nginx:$NGINX_VERSION
