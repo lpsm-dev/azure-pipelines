@@ -10,6 +10,7 @@
 
 <p align="left">
   <a href="#➤-description">Description</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#➤-usage">Usage</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#➤-topics">Topics</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#➤-features">Features</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#➤-references">References</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -33,6 +34,32 @@ This will give access on your **local machine**.
 Azure Pipelines is a cloud service that you can use to automatically build and test your code project and make it available to other users. It works with just about any language or project type.
 
 Azure Pipelines combines continuous integration (CI) and continuous delivery (CD) to constantly and consistently test and build your code and ship it to any target.
+
+## ➤ Usage
+
+>
+> First configure a github service connection
+>
+
+It is suggested to use a generic name, such as `github` so forks can also configure the same. You can find this in `Project Settings => Service connections` in the `Azure Devops` dashboard for your project.
+
+Below I'm using the endpoint name `github`.
+
+>
+> Next add this to the beginning of your azure-pipelines.yml
+>
+
+```yml
+resources:
+  repositories:
+    - repository: lpmatos
+      type: github
+      endpoint: github
+      name: lpmatos/azure-pipelines
+      ref: 'refs/heads/master'
+```
+
+this will make the templates in this repository available in the `lpmatos` namespace.
 
 ## ➤ Topics
 
