@@ -17,6 +17,7 @@ help:
 	@echo "* "
 	@echo "*  🎉 Short commands 🎉"
 	@echo "* "
+	@echo "* 📌 make verify"
 	@echo "* 📌 make global-requirements"
 	@echo "* 📌 make npm-requirements"
 	@echo "* 📌 make version"
@@ -31,6 +32,13 @@ help:
 ##################################################
 # SHORTCUTS
 ##################################################
+
+verify:
+ifeq ($(GITHUB_TOKEN),)
+	@echo "ERROR: 🆘 no GITHUB_TOKEN was provided - undefined variable. Exiting." && exit 1
+else
+	@echo "==> 🎊 We have a GITHUB_TOKEN!"
+endif
 
 global-requirements:
 	@echo "==> 🌐 Checking global requirements..."
@@ -54,10 +62,10 @@ scan: global-requirements
 	@echo "==> 🔒 Scan git repo for secrets..."
 	@npm run secrets
 
-release-debug: install
+release-debug: install verify
 	@echo "==> 📦 Runnig release debug..."
 	@npm run release-debug
 
-release: install
+release: install verify
 	@echo "==> 📦 Runnig release..."
 	@npm run release

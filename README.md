@@ -17,25 +17,63 @@
   <a href="#-how-to-contribute">How to contribute</a>
 </p>
 
-## ➤ Getting Started
+## ➤ Getting Started <a name = "getting-started"></a>
 
-If you want use this repository you need to make a **git clone**:
-
+If you want contribute on this project, first you need to make a **git clone**:
 
 >
 > 1. git clone --depth 1 https://github.com/lpmatos/azure-pipelines.git -b master
 >
 
+This will give you access to the code on your **local machine**.
 
-This will give access on your **local machine**.
+## ➤ Prerequisites <a name = "prerequisites"></a>
 
-## ➤ Description
+Before starting to develop you need to install some tools on your local machine:
 
-Azure Pipelines is a cloud service that you can use to automatically build and test your code project and make it available to other users. It works with just about any language or project type.
+### Support tools 
 
-Azure Pipelines combines continuous integration (CI) and continuous delivery (CD) to constantly and consistently test and build your code and ship it to any target.
+- **npm**, **make**, **gitleaks**
 
-## ➤ Usage
+For more information, access the [CONTRIBUTING](CONTRIBUTING.md) file.
+
+## ➤ Installing <a name = "installing"></a>
+
+### Support dependencies
+
+To install support dependencies that handle commit and release standards, run the command:
+
+```bash
+make install
+```
+
+This shareable configuration use the following dependencies:
+
+- ⮚ [Semantic Release](https://github.com/semantic-release) + Plugins de configuração
+  - [`semantic-release`](https://github.com/semantic-release/semantic-release)
+  - [`@semantic-release/git`](https://github.com/semantic-release/git)
+  - [`@semantic-release/github`](https://github.com/semantic-release/github)
+  - [`@semantic-release/changelog`](https://github.com/semantic-release/changelog)
+  - [`@semantic-release/commit-analyzer`](https://github.com/semantic-release/commit-analyzer)
+  - [`@semantic-release/release-notes-generator`](https://github.com/semantic-release/release-notes-generator)
+- ⮚ [Commit Lint](https://github.com/conventional-changelog/commitlint) usando o [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
+  - [`commitizen`](https://github.com/commitizen/cz-cli)
+  - [`@commitlint/cli`](https://github.com/conventional-changelog/commitlint)
+  - [`@commitlint/config-conventional`](https://github.com/conventional-changelog/commitlint)
+- ⮚ Git Hooks com [Husky](https://github.com/typicode/husky).
+  - [`husky`](https://github.com/semantic-release/git)
+
+For more information, access the [CONTRIBUTING](CONTRIBUTING.md) file.
+
+### Hooks
+
+Configure husky `commit-msg` and `pre-commit` hooks:
+
+```bash
+bash scripts/hooks.sh
+```
+
+## ➤ Usage <a name = "usage"></a>
 
 >
 > First configure a github service connection
@@ -61,75 +99,69 @@ resources:
 
 this will make the templates in this repository available in the `lpmatos` namespace.
 
-## ➤ Topics
+## ➤ Description <a name = "description"></a>
 
-* [Agents](./docs/Agents.md)
-* [Concepts](./docs/Concepts.md)
-* [DevOps](./docs/DevOps.md)
+<p align="center">
+  <img alt="secret" src="https://media3.giphy.com/media/5ziQ5kjh4lgCd29WOR/200w.gif?cid=82a1493b0uufgvz9tw6byen3bed3y7h9u0ilzpcuthz7a5ne&rid=200w.gif" width="250px" float="center"/>
+</p>
 
-## ➤ Features
+Azure Pipelines is a cloud service that you can use to automatically build and test your code project and make it available to other users. It works with just about any language or project type. Azure Pipelines combines continuous integration (CI) and continuous delivery (CD) to constantly and consistently test and build your code and ship it to any target.
 
-* Default gitignore and editorconfig.
-* GitLeaks file.
-* Semantic Release file.
-* NPM modules automation.
-  * Commitlint - Conventional Commits.
-  * Git Hooks with Husky.
+## ➤ Links <a name = "links"></a>
 
-## ➤ References
+- https://docs.microsoft.com/en-us/azure/devops/pipelines/repos/azure-repos-git
+- https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema
+- https://docs.microsoft.com/en-us/azure/devops/pipelines/process/templates
+- https://docs.microsoft.com/en-us/azure/devops/pipelines/repos/multi-repo-checkout
+- https://github.com/asottile/azure-pipeline-templates
+- https://stackoverflow.com/questions/57180038/how-to-reuse-yaml-templates-in-different-azure-devops-team-project
+- https://somakdas.medium.com/sonarqube-integration-with-azure-devops-a9ccd6d23fc9
+- https://docs.microsoft.com/en-us/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml
+- https://www.padok.fr/en/blog/azure-devops-pipeline-service
+- https://docs.microsoft.com/en-us/samples/azure-samples/azure-pipelines-remote-tasks/azure-pipeline-remote-tasks/
+- https://docs.microsoft.com/pt-br/azure/devops/pipelines/process/expressions?view=azure-devops
+- https://stackoverflow.com/questions/50739815/trying-to-add-sonarqube-sonaranalysis-task-in-yaml-build-template-for-vsts-as
+- https://msftplayground.com/2019/02/combining-sonarqube-and-azure-devops/
+- https://community.sonarsource.com/t/community-edition-with-vsts-to-use-the-property-sonar-branch-name-the-branch-plugin-is-required-but-not-installed/1686/15
+- https://markpatton.cloud/2020/09/26/secret-scanning-protecting-your-code-in-azure-devops/
+- https://damienaicheh.github.io/azure/devops/2020/11/12/extend-azure-devops-yaml-pipelines-en.html
+- https://gist.github.com/justinyoo/baf3ecf3240df3037be0f84fe43b5425
+- https://gist.github.com/mariomeyrelles/2cf7375c13e64e5193ea0b1a9e524f04
+- https://dev.to/n3wt0n/azure-pipeines-yaml-template-demystified-9c6
+- https://damienaicheh.github.io/xamarin/azure/devops/2019/11/21/reuse-your-azure-devops-pipeline-en.html
+- https://medium.com/swlh/azure-pipelines-yaml-templates-194bd35e8aa6
+- https://github.com/nordcloud/azure-pipelines-templates
 
-* https://docs.microsoft.com/en-us/azure/devops/pipelines/repos/azure-repos-git
-* https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema
-* https://docs.microsoft.com/en-us/azure/devops/pipelines/process/templates
-* https://docs.microsoft.com/en-us/azure/devops/pipelines/repos/multi-repo-checkout
-* https://github.com/asottile/azure-pipeline-templates
-* https://stackoverflow.com/questions/57180038/how-to-reuse-yaml-templates-in-different-azure-devops-team-project
-
-## ➤ How to contribute
-
->
-> 1. Make a **Fork**.
-> 2. Follow the project organization.
-> 3. Add the file to the appropriate level folder - If the folder does not exist, create according to the standard.
-> 4. Make the **Commit**.
-> 5. Open a **Pull Request**.
-> 6. Wait for your pull request to be accepted.. 🚀
->
-
-Remember: There is no bad code, there are different views/versions of solving the same problem. 😊
-
-## ➤ Add to git and push
-
-You must send the project to your GitHub after the modifications
-
->
-> 1. git add -f .
-> 2. git commit -m "Added - Fixing somethings"
-> 3. git push origin master
->
-
-## ➤ Versioning
-
-- We currently do not have a CHANGELOG.md generated.
-
-## ➤ Author
+## ➤ Author <a name = "author"></a>
 
 👤 **Lucca Pessoa**
 
 Hey!! If you like this project or if you find some bugs feel free to contact me in my channels:
 
 >
-> * Email: luccapsm@gmail.com
+> * Email: luccapsm@protonmail.com
 > * Website: https://github.com/lpmatos
 > * Github: [@lpmatos](https://github.com/lpmatos)
 > * GitLab: [@lpmatos](https://gitlab.com/lpmatos)
 > * LinkedIn: [@luccapessoa](https://www.linkedin.com/in/luccapessoa/)
 >
 
-## ➤ Show your support
+## ➤ Versioning <a name = "versioning"></a>
+
+To check the change history, please access the [**CHANGELOG.md**](CHANGELOG.md) file.
+
+## ➤ Contributing <a name = "contributing"></a>
+
+Contributions, issues and feature requests are welcome. Feel free to check issues page if you want to contribute. [Check the contributing guide](CONTRIBUTING.md).
+
+## ➤ Troubleshooting <a name = "troubleshooting"></a>
+
+If you have any problems, please contact [me](luccapsm@protonmail.com).
+
+## ➤ Show your support <a name = "show-your-support"></a>
 
 Give a ⭐️ if this project helped you!
 
 ---
 
-_This README was generated with ❤️ by me_
+Made with 💜 by [me](https://github.com/lpmatos) :wave: inspired on [readme-md-generator](https://github.com/kefranabg/readme-md-generator)
