@@ -1,0 +1,83 @@
+# ==============================================================================
+# DEFINE PARAMETERS
+# ==============================================================================
+
+parameters:
+- name: enable
+  displayName: Enable sonarqube analysis job
+  type: boolean
+  default: false
+- name: isMaven
+  displayName: Enable sonarqube analysis maven prepare
+  type: boolean
+  default: false
+- name: debug
+  displayName: Enable sonarqube analysis debug
+  type: boolean
+  default: false
+- name: continueError
+  displayName: Enable continue on error
+  type: boolean
+  default: false
+- name: serviceConnection
+  displayName: Sonarqube Service Connection name
+  type: string
+  default: ''
+
+# ==============================================================================
+# JOBS
+# ==============================================================================
+
+jobs:
+
+# ==============================================================================
+# SONARQUBE
+# ==============================================================================
+
+- ${{ if eq(parameters.enable, true) }}:
+  - job: Sonarqube
+    displayName: Sonarqube
+    continueOnError: ${{parameters.continueError}}
+    condition: |
+      and(
+        succeeded(),
+        eq(variables.GIT_BRANCH_NAME, 'develop')
+      )
+    steps:
+    - ${{ if eq(parameters.isMaven, true) }}:
+      - task: DownloadBuildArtifacts@0
+        inputs:
+          buildType: current
+          downloadType: single
+          artifactName: $(GIT_REPO_NAME)
+          downloadPath: $(ARTIFACTS_PATH)
+        displayName: Download artifacts
+
+    - task: SonarQubePrepare@4
+      displayName: Prepare analysis on sonarqube
+      inputs:
+        SonarQube: ${{parameters.serviceConnection}}
+        scannerMode: CLI
+        configMode: manual
+        cliProjectKey: $(AZURE_DEVOPS_PROJECT_NAME)-$(GIT_REPO_NAME)
+        cliProjectName: $(AZURE_DEVOPS_PROJECT_NAME)-$(GIT_REPO_NAME)
+        ${{ if eq(parameters.isMaven, true) }}:
+          extraProperties: |
+            sonar.sourceEncoding=UTF-8
+            sonar.verbose=${{parameters.debug}}
+            sonar.projectBaseDir=$(GIT_ROOT_PATH)
+            sonar.java.binaries=$(ARTIFACTS_PATH)/$(GIT_REPO_NAME)/classes
+        ${{ if eq(parameters.isMaven, false) }}:
+          extraProperties: |
+            sonar.sourceEncoding=UTF-8
+            sonar.verbose=${{parameters.debug}}
+            sonar.projectBaseDir=$(GIT_ROOT_PATH)
+
+    - task: SonarQubeAnalyze@4
+      displayName: Run code analysis
+      timeoutInMinutes: 10
+
+    - task: SonarQubePublish@4
+      displayName: Publish quality gate result
+      inputs:
+        pollingTimeoutSec: 300

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# shellcheck source=/dev/null
+. "$(dirname "$0")/_/husky.sh"
+
+echo "✨ Run commit lint message"
+
+npx --no-install commitlint --edit "$1"

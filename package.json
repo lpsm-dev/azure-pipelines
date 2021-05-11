@@ -1,29 +1,32 @@
 {
   "_comment": "this project is not a node.js one, package.json is just used to define some metadata",
   "scripts": {
+    "prepare": "husky install .husky",
     "cm": "git cz",
-    "secrets": "gitleaks --verbose --path=. --config-path=.gitleaks.toml"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "post-commit": "bash githooks/pre-push/helm-lint"
-    }
+    "secrets": "gitleaks --verbose -c .gitleaks.toml -p .",
+    "release": "npx semantic-release --no-ci",
+    "release-debug": "npx semantic-release --dry-run --no-ci --debug"
   },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
     ]
   },
-  "devDependencies": {
-    "@commitlint/cli": "latest",
-    "@commitlint/config-conventional": "latest",
-    "commitizen": "latest",
-    "husky": "latest"
-  },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "12.0.1",
+    "@commitlint/config-conventional": "12.0.1",
+    "@semantic-release/changelog": "5.0.1",
+    "@semantic-release/commit-analyzer": "8.0.1",
+    "@semantic-release/exec": "5.0.0",
+    "@semantic-release/git": "9.0.0",
+    "@semantic-release/release-notes-generator": "9.0.2",
+    "commitizen": "4.2.3",
+    "husky": "6.0.0",
+    "semantic-release": "17.4.2"
   }
 }

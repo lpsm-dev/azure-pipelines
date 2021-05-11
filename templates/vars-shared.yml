@@ -1,0 +1,8 @@
+variables:
+  AZURE_DEVOPS_PROJECT_NAME: $[lower(variables['System.TeamProject'])]
+  GIT_COMMIT: $(Build.SourceVersion)
+  GIT_REPO_NAME: $(Build.Repository.Name)
+  GIT_BRANCH_NAME: $[replace(variables['Build.SourceBranch'], 'refs/heads/', '')]
+  GIT_ROOT_PATH: $(Build.SourcesDirectory)
+  ARTIFACTS_PATH: $(Build.ArtifactStagingDirectory)
+  TRIVY_VERSION: 0.15.0
