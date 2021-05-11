@@ -1,21 +1,25 @@
+<div align="center">
+
 <p align="center">
-  <img alt="gitlab" src="https://res.cloudinary.com/practicaldev/image/fetch/s--goZ15AQs--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://dev-to-uploads.s3.amazonaws.com/i/ic17ec0lhrlqgeb727my.png" width="250px" float="center"/>
+  <img alt="azure" src="https://cdn.dribbble.com/users/3847465/screenshots/10765125/media/e5f08353be5952c5bfd4a759903d5c5a.gif" width="250px" float="center"/>
 </p>
 
-<h1 align="center">Welcome to azure pipelines repository</h1>
+<h1 align="center">Shared Pipeline</h1>
 
-> Demonstration of the CI/CD process using Azure DevOps pipeline
+[![Semantic Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://gitlab.com/dry-group/cluster-management)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](https://gitlab.com/dry-group/cluster-management)
 
-## ➤ Menu
-
-<p align="left">
-  <a href="#-description">Description</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-usage">Usage</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-topics">Topics</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-features">Features</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-references">References</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-how-to-contribute">How to contribute</a>
+<p align="center">
+  <img alt="pipelines" src="https://images.ctfassets.net/em6l9zw4tzag/7j79Xx5NqeJlvGj6w98JUX/ecd7317698578b9efa1482154d0188f4/configuringpipeline.gif" width="450px" float="center"/>
 </p>
+
+<p align="center">  
+  <h3>Demonstration of the CI/CD process using Azure DevOps pipeline</h3>
+</p>
+
+</div>
+
+---
 
 ## ➤ Getting Started <a name = "getting-started"></a>
 
