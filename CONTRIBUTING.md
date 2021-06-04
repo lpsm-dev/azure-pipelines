@@ -1,10 +1,10 @@
-Primeiramente, obrigado 🎉! É muito gratificante saber que podemos contar com novas features e pull-requests do nosso time! Caso sua mudança não seja trivial, abra uma issue nesse projeto para podermos discutir a sua ideia e estratégia de implementação. Será incrível poder interagir e se conectar com novos contribuidores, esperamos que todos possam ajudar nessa evolução 🤗!
+Primeiramente, obrigado 🎉! É muito gratificante saber que podemos contar com novas features e pull-requests do nosso time! Caso sua mudança não seja trivial, abra uma issue nesse projeto para podermos discutir a sua ideia e estratégia de implementação. Será incrível poder interagir e se conectar com novos contribuidores!
 
 ## ➤ Overview
 
-O objetivo aqui é gerar valor para projetos com múltiplas participações. Sabemos que quando temos vários colaboradores interagindo em um processo como esse a complexidade aumenta significativamente. Pensando nisso temos o documento **CONTRIBUTING.md**, que basicamente é onde abordarmos as melhores práticas a serem seguidas durante o processo de desenvolvimento no projeto, definindo o passo a passo de contribução para qualquer novo contribuidor: desde de o que ele precisa ter na máquina, até o que ele precisa fazer para gerar uma nova versão da aplicação.
+Como estamos tratando de um desenvolvimento colaborativo, a padronização é algo que mais cedo ou mais tarde deve acontecer. Definir um padrão de trabalho mostra o quão maduro o seu time vai estar para colaborar e consequentemente colher os frutos dessa maturidade (o bônus que temos com isso é enorme) em seu processo de automação, versionamento e pipeline.
 
-Como estamos tratando de um desenvolvimento colaborativo a padronização é algo que mais cedo ou mais tarde deve acontecer. Além dessa padronização é imprescindível uma boa comunicação interna, uma vez que de nada adianta ter um processo de trabalho padronizado e ninguém do time se comunicar. Definir um padrão de trabalho em equipe e ter uma boa comunicação mostra o quão maduro o seu time vai estar para colaborar e consequentemente colher os frutos em seu processo de automação, versionamento e pipeline. 
+O objetivo aqui é gerar valor para projetos com múltiplas participações. Pensando nisso temos um documento chamado **CONTRIBUTING.md** onde abordarmos as melhores práticas a serem seguidas durante o processo de desenvolvimento neste projeto (definimos o passo a passo de contribução para qualquer novo contribuidor). Esperamos que todos possam ajudar nessa evolução 🤗!
 
 ## ➤ Menus
 
@@ -94,7 +94,7 @@ git push -u origin <branch-alvo>
 
 ### Submitting a Merge Request (MR)
 
-Antes de aceitar um **merge-request**, preferimos que você esmague seus commits em um único commit utilizando o `git stash`. Essa ação visa garantir um histórico de commits mais limpo. A maioria das ferramentas Git já possuem integração pela própria UI para já acionar esse comando durante a abertura dessa mesclagem e no GitHub não é diferente.
+Antes de aceitar um **merge-request**, preferimos que você esmague seus commits em um único commit utilizando o `git stash`. Essa ação visa garantir um histórico de commits mais limpo. A maioria das ferramentas Git já possuem integração pela própria UI para já acionar esse comando durante a abertura dessa mesclagem e no GitLab não é diferente.
 
 Assumindo que o **code-review** foi concluído e os teste foram passados (a pipeline foi bem sucedida), sua mudança deve ser mesclada o mais rápido possível para a branch alvo.
 
@@ -173,7 +173,7 @@ cz-cli@4.0.3, cz-conventional-changelog@3.2.0
 ## ➤ Release Steps
 
 ```bash
-export GITHUB_TOKEN=""
+export GITLAB_TOKEN=""
 make release-debug
 git add . && git commit -am "chore: bump version file"
 make release

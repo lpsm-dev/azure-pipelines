@@ -34,15 +34,17 @@ help:
 ##################################################
 
 verify:
-ifeq ($(GITHUB_TOKEN),)
-	@echo "ERROR: 🆘 no GITHUB_TOKEN was provided - undefined variable. Exiting." && exit 1
+ifeq ($(GITLAB_TOKEN),)
+	@echo "ERROR: 🆘 no GITLAB_TOKEN was provided - undefined variable. Exiting." && exit 1
 else
-	@echo "==> 🎊 We have a GITHUB_TOKEN!"
+	@echo "==> 🎊 We have a GITLAB_TOKEN!"
 endif
 
 global-requirements:
 	@echo "==> 🌐 Checking global requirements..."
 	@command -v git >/dev/null || ( echo "ERROR: 🆘 git binary not found. Exiting." && exit 1)
+	@command -v yamlfmt >/dev/null || ( echo "ERROR: 🆘 yamlfmt binary not found. Exiting." && exit 1)
+	@command -v yamllint >/dev/null || ( echo "ERROR: 🆘 yamllint binary not found. Exiting." && exit 1)
 	@command -v gitleaks >/dev/null || ( echo "ERROR: 🆘 gitleaks binary not found. Exiting." && exit 1)
 	@echo "==> ✅ Global requirements are met!"
 
@@ -52,6 +54,8 @@ npm-requirements: global-requirements
 	@echo "==> ✅ Package requirements are met!"
 
 version: npm-requirements
+	@echo "==> ✨ YAMLLint version: $(shell yamllint --version)"
+	@echo "==> ✨ Gitleaks version: $(shell gitleaks --version)"
 	@echo "==> ✨ NPM version: $(shell npm --version)"
 
 install: npm-requirements
