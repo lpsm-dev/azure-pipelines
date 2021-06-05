@@ -28,6 +28,6 @@
     "@semantic-release/release-notes-generator": "9.0.2",
     "commitizen": "4.2.3",
     "husky": "6.0.0",
-    "semantic-release": "17.4.2"
+    "semantic-release": "17.4.3"
   }
 }
