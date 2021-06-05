@@ -1,23 +1,33 @@
-<div align="center">
-
 <p align="center">
-  <img alt="azure" src="https://cdn.dribbble.com/users/3847465/screenshots/10765125/media/e5f08353be5952c5bfd4a759903d5c5a.gif" width="250px" float="center"/>
+  <img alt="azure" src="https://cdn.dribbble.com/users/3847465/screenshots/10765125/media/e5f08353be5952c5bfd4a759903d5c5a.gif" width="350px" float="center"/>
 </p>
 
-<h1 align="center">Shared Pipeline</h1>
+<h2 align="center">👨‍💻 Shared Azure Pipelines 👨‍💻</h2>
+
+<div align="center">
 
 [![Semantic Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://gitlab.com/dry-group/cluster-management)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](https://gitlab.com/dry-group/cluster-management)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/lpmatos/azure-pipelines)
+
+</div>
+
+---
 
 <p align="center">
   <img alt="pipelines" src="https://images.ctfassets.net/em6l9zw4tzag/7j79Xx5NqeJlvGj6w98JUX/ecd7317698578b9efa1482154d0188f4/configuringpipeline.gif" width="450px" float="center"/>
 </p>
 
 <p align="center">  
-  <h3>Demonstration of the CI/CD process using Azure DevOps pipeline</h3>
+  👻 Collection of some Azure Pipelines templates 👻
 </p>
 
-</div>
+<p align="center">
+  <a href="#about">About</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#getting-started">Getting Started</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#authors">Authors</a>
+</p>
 
 ---
 
@@ -140,6 +150,10 @@ Contributions, issues and feature requests are welcome. Feel free to check issue
 ## ➤ Troubleshooting <a name = "troubleshooting"></a>
 
 If you have any problems, please contact [me](luccapsm@protonmail.com).
+
+## ➤ License <a name = "license"></a>
+
+This repository is released under the [MIT license](https://opensource.org/licenses/MIT). In short, this means you are free to use this software in any personal, open-source or commercial projects. Attribution is optional but appreciated.
 
 ## ➤ Show your support <a name = "show-your-support"></a>
 
