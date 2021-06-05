@@ -6,7 +6,7 @@ parameters:
 - name: imageRepository
   displayName: Image repository name
   type: string
-  default: '$(Build.Repository.Name)'
+  default: $(Build.Repository.Name)
 - name: serviceConnection
   displayName: Docker Service Connection name
   type: string

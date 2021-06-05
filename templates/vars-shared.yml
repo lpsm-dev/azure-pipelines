@@ -1,7 +1,3 @@
-# ==============================================================================
-# SHARED VARIABLES
-# ==============================================================================
-
 variables:
   AZURE_DEVOPS_PROJECT_NAME: $[lower(variables['System.TeamProject'])]
   GIT_COMMIT: $(Build.SourceVersion)

@@ -7,6 +7,14 @@ parameters:
   displayName: Enable prepare maven
   type: boolean
   default: false
+- name: auth
+  displayName: Enable auth maven
+  type: boolean
+  default: false
+- name: authRepo
+  displayName: Auth repo name
+  type: string
+  default: total-rewards-statement-commons
 
 # ==============================================================================
 # JOBS
@@ -18,33 +26,39 @@ jobs:
 # MAVEN
 # ==============================================================================
 
-  - ${{ if eq(parameters.enable, true) }}:
-    - job: Maven
-      displayName: Maven
-      condition: |
-        and(
-          succeeded(),
-          eq(variables.GIT_BRANCH_NAME, 'develop')
-        )
-      steps:
-      - task: Maven@3
+- ${{ if eq(parameters.enable, true) }}:
+  - job: Maven
+    displayName: Maven
+    condition: |
+      and(
+        succeeded(),
+        eq(variables.GIT_BRANCH_NAME, 'develop')
+      )
+    steps:
+    - ${{ if eq(parameters.enable, true) }}:
+      - task: MavenAuthenticate@0
+        displayName: Maven Authenticate
         inputs:
-          mavenPomFile: $(GIT_ROOT_PATH)/code/pom.xml
-          goals: clean install
-          javaHomeOption: JDKVersion
-          jdkVersionOption: 1.11
-          jdkArchitectureOption: x64
-        displayName: Make maven install
+          artifactsFeeds: ${{parameters.authRepo}}
 
-      - task: CopyFiles@2
-        inputs:
-          sourceFolder: $(GIT_ROOT_PATH)/code/target
-          contents: '**'
-          targetFolder: $(ARTIFACTS_PATH)
-        displayName: Copy files
+    - task: Maven@3
+      inputs:
+        mavenPomFile: $(GIT_ROOT_PATH)/code/pom.xml
+        goals: clean install
+        javaHomeOption: JDKVersion
+        jdkVersionOption: 1.11
+        jdkArchitectureOption: x64
+      displayName: Make maven install
 
-      - task: PublishBuildArtifacts@1
-        inputs:
-          pathToPublish: $(ARTIFACTS_PATH)
-          artifactName: $(GIT_REPO_NAME)
-        displayName: Publish artifacts
+    - task: CopyFiles@2
+      inputs:
+        sourceFolder: $(GIT_ROOT_PATH)/code/target
+        contents: '**'
+        targetFolder: $(ARTIFACTS_PATH)
+      displayName: Copy files
+
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathToPublish: $(ARTIFACTS_PATH)
+        artifactName: $(GIT_REPO_NAME)
+      displayName: Publish artifacts
