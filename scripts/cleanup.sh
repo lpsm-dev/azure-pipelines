@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "Cleanup your commit history"
+echo "Cleanup your commit history:"
 
 git checkout --orphan latest_branch
 git add -A
