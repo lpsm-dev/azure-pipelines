@@ -3,7 +3,7 @@
   "scripts": {
     "cm": "git cz",
     "lint": "mega-linter-runner -p . --fix",
-    "secrets": "gitleaks --verbose -c .gitleaks.toml -p ."
+    "secrets": "gitleaks -s . -c .gitleaks.toml detect"
   },
   "commitlint": {
     "extends": [
