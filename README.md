@@ -157,33 +157,34 @@ Azure Pipelines is a cloud service that you can use to automatically build and t
 Hey!! If you like this project or if you find some bugs feel free to contact me in my channels:
 
 >
-> * Email: luccapsm@protonmail.com
+> * Email: lpsm-dev@protonmail.com
 > * Website: https://github.com/lpmatos
-> * Github: [@lpmatos](https://github.com/lpmatos)
+> * GitHub: [@lpmatos](https://github.com/lpmatos)
 > * GitLab: [@lpmatos](https://gitlab.com/lpmatos)
-> * LinkedIn: [@luccapessoa](https://www.linkedin.com/in/luccapessoa/)
 >
 
 ## ➤ Versioning <a name = "versioning"></a>
 
 To check the change history, please access the [**CHANGELOG.md**](CHANGELOG.md) file.
 
-## ➤ Contributing <a name = "contributing"></a>
-
-Contributions, issues and feature requests are welcome. Feel free to check issues page if you want to contribute. [Check the contributing guide](CONTRIBUTING.md).
-
 ## ➤ Troubleshooting <a name = "troubleshooting"></a>
 
-If you have any problems, please contact [me](luccapsm@protonmail.com).
+If you have any problems, please contact [me](https://github.com/lpmatos).
 
-## ➤ License <a name = "license"></a>
+## ➤ Project status <a name = "project-status"></a>
 
-This repository is released under the [MIT license](https://opensource.org/licenses/MIT). In short, this means you are free to use this software in any personal, open-source or commercial projects. Attribution is optional but appreciated.
+Currently the project is constantly being updated 👾.
 
 ## ➤ Show your support <a name = "show-your-support"></a>
 
-Give a ⭐️ if this project helped you!
+<div align="center">
 
----
+Give me a ⭐️ if this project helped you!
+
+<p>
+  <img alt="gif-header" src="https://www.icegif.com/wp-content/uploads/baby-yoda-bye-bye-icegif.gif" width="350px" float="center"/>
+</p>
 
 Made with 💜 by [me](https://github.com/lpmatos) :wave: inspired on [readme-md-generator](https://github.com/kefranabg/readme-md-generator)
+
+</div>
