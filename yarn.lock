@@ -2162,10 +2162,10 @@ map-obj@^4.0.0:
   resolved "https://registry.yarnpkg.com/map-obj/-/map-obj-4.3.0.tgz#9304f906e93faae70880da102a9f1df0ea8bb05a"
   integrity sha512-hdN1wVrZbb29eBGiGjJbeP8JbKjq1urkHJ/LIP/NY48MZ1QVXUsQBV1G1zvYFHn1XE06cwjBsOI2K3Ulnj1YXQ==
 
-mega-linter-runner@5.4.0:
-  version "5.4.0"
-  resolved "https://registry.yarnpkg.com/mega-linter-runner/-/mega-linter-runner-5.4.0.tgz#deb32c48cf4e32c29925f3e421c95109954d5aa7"
-  integrity sha512-4Vdgh3PKTDMndKqTEAgxPN6ExitGiGBr4oEnPhvZhNL7RrQxREkySyfVUpcxQLxW69FMaOm5xwg6D964OOPN4Q==
+mega-linter-runner@5.5.0:
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/mega-linter-runner/-/mega-linter-runner-5.5.0.tgz#441cfee270517244730edac973e9499ca18f1f56"
+  integrity sha512-HhlQtYErVpL4ihzaRUpfyCF1lr9PQvN23ZLrjnpZdgM50/pCxcr8k320ZzIzdPjGWHTRvBWEqa4DGIpoIQozIw==
   dependencies:
     chalk "^4.1.2"
     find-package-json "^1.2.0"
