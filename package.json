@@ -19,7 +19,7 @@
     "@commitlint/cli": "16.0.2",
     "@commitlint/config-conventional": "16.0.0",
     "commitizen": "4.2.4",
-    "mega-linter-runner": "5.4.0"
+    "mega-linter-runner": "5.5.0"
   },
   "resolutions": {
     "ansi-regex": "^5.0.1"
