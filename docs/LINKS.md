@@ -22,3 +22,4 @@
 - https://damienaicheh.github.io/xamarin/azure/devops/2019/11/21/reuse-your-azure-devops-pipeline-en.html
 - https://medium.com/swlh/azure-pipelines-yaml-templates-194bd35e8aa6
 - https://github.com/nordcloud/azure-pipelines-templates
+- https://www.youtube.com/watch?v=F93dKycIqEM
