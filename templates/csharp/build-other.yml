@@ -1,0 +1,31 @@
+pool:
+  name: Azure Pipelines
+  demands: msbuild
+
+steps:
+- task: NuGetToolInstaller@1
+  displayName: 'Use NuGet 5.8.0'
+  inputs:
+    versionSpec: 5.8.0
+
+- task: NuGetCommand@2
+  displayName: 'NuGet restore'
+  inputs:
+    restoreSolution: HR.MeuRegistro.sln
+    restoreDirectory: packages
+
+- task: MSBuild@1
+  displayName: 'Build Solution'
+  inputs:
+    solution: HR.MeuRegistro.sln
+    msbuildArchitecture: x64
+    platform: '$(BuildPlatform)'
+    configuration: '$(BuildConfiguration)'
+    msbuildArguments: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactstagingdirectory)\\" '
+    maximumCpuCount: true
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
+  condition: succeededOrFailed()

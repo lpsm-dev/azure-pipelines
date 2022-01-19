@@ -1,0 +1,33 @@
+{
+  "_comment": "this project is not a node.js one, package.json is just used to define some metadata",
+  "scripts": {
+    "cm": "git cz",
+    "secrets": "gitleaks detect -s . -c .github/config/.gitleaks.toml"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "16.0.2",
+    "@commitlint/config-conventional": "16.0.0",
+    "@semantic-release/changelog": "6.0.1",
+    "@semantic-release/commit-analyzer": "9.0.2",
+    "@semantic-release/exec": "6.0.3",
+    "@semantic-release/git": "10.0.1",
+    "@semantic-release/gitlab": "7.0.4",
+    "@semantic-release/release-notes-generator": "10.0.3",
+    "commitizen": "4.2.4",
+    "semantic-release": "19.0.2"
+  },
+  "resolutions": {
+    "ansi-regex": "^6.0.0",
+    "marked": "^4.0.10"
+  }
+}

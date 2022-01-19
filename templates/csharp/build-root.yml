@@ -1,0 +1,79 @@
+pool:
+  name: Azure Pipelines
+  demands:
+  - msbuild
+  - visualstudio
+
+steps:
+- task: NuGetToolInstaller@1
+  displayName: 'Use NuGet 5.8.0'
+  inputs:
+    versionSpec: 5.8.0
+
+- task: NuGetCommand@2
+  displayName: 'NuGet restore'
+  inputs:
+    restoreSolution: '$(Parameters.solution)'
+
+- task: VSBuild@1
+  displayName: 'Build solution'
+  inputs:
+    solution: HR.MeuRegistro.sln
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactstagingdirectory)\\" '
+    platform: '$(BuildPlatform)'
+    configuration: '$(BuildConfiguration)'
+    maximumCpuCount: true
+    createLogFile: true
+    logFileVerbosity: diagnostic
+
+- task: VSTest@2
+  displayName: 'Test Assemblies'
+  inputs:
+    testAssemblyVer2: |
+     **\$(BuildConfiguration)\*test*.dll
+     !**\obj\**
+  enabled: false
+
+- task: PublishSymbols@1
+  displayName: 'Publish symbols path'
+  inputs:
+    SearchPattern: '**\bin\**\*.pdb'
+  enabled: false
+  continueOnError: true
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+  inputs:
+    SourceFolder: HR.MeuRegistro.DB/sqlPublicacao.sql
+    TargetFolder: '$(build.artifactstagingdirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
+  condition: succeededOrFailed()
+
+- task: DeleteFiles@1
+  displayName: 'Delete files from $(build.artifactstagingdirectory)'
+  inputs:
+    SourceFolder: '$(build.artifactstagingdirectory)'
+    Contents: |
+     *.min.css
+     *.min.js
+     *.png
+     *.jpg
+     *.less
+     *.html
+     *.php
+     *.asp
+     *.map
+     *.md
+     *.json
+     *.ts
+     *scss
+     *.eot
+     *.svg
+     *.ttf
+     *.wolff
+     *.wolff2
+     *.gif

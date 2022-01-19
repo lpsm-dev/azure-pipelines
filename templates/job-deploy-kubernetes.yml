@@ -1,0 +1,106 @@
+# ==============================================================================
+# DEFINE PARAMETERS
+# ==============================================================================
+
+parameters:
+- name: imageRepository
+  displayName: Image repository name
+  type: string
+  default: ''
+- name: containerRegistry
+  displayName: Docker container registry
+  type: string
+  default: ''
+- name: serviceConnection
+  displayName: Kubernetes Service Connection name
+  type: string
+  default: ''
+- name: namespace
+  displayName: Kubernetes production namespace name
+  type: string
+  default: ''
+
+# ==============================================================================
+# JOBS
+# ==============================================================================
+
+jobs:
+
+# ==============================================================================
+# DEPLOY PRODUCTION
+# ==============================================================================
+
+- deployment: Deploy_Production
+  displayName: Deploy Kubernetes Production
+  condition: |
+    and(
+      succeeded(),
+      eq(variables.GIT_BRANCH_NAME, 'main')
+    )
+  environment: production
+  strategy:
+    runOnce:
+      deploy:
+        steps:
+        - task: Kubernetes@1
+          displayName: Deploy image to AKS
+          inputs:
+            command: set
+            connectionType: Kubernetes Service Connection
+            kubernetesServiceEndpoint: ${{parameters.serviceConnection}}-production
+            namespace: ${{parameters.namespace}}-production
+            arguments: image deployment/${{parameters.imageRepository}} ${{parameters.imageRepository}}=${{parameters.containerRegistry}}/${{parameters.imageRepository}}:$(Build.SourceVersion)
+
+# ==============================================================================
+# DEPLOY STAGE
+# ==============================================================================
+
+- deployment: Deploy_Stage
+  displayName: Deploy Kubernetes Stage
+  condition: |
+    and(
+      succeeded(),
+      eq(variables.GIT_BRANCH_NAME, 'stage')
+    )
+  environment: stage
+  strategy:
+    runOnce:
+      deploy:
+        steps:
+        - task: Kubernetes@1
+          displayName: Deploy the image to AKS
+          inputs:
+            command: set
+            connectionType: Kubernetes Service Connection
+            kubernetesServiceEndpoint: ${{parameters.serviceConnection}}-stage
+            namespace: ${{parameters.namespace}}-stage
+            arguments: image deployment/$(Build.Repository.Name) $(Build.Repository.Name)=$(containerRegistry)/$(Build.Repository.Name):$(Build.SourceVersion)
+
+# ==============================================================================
+# DEPLOY DEVELOP
+# ==============================================================================
+
+- deployment: Deploy_Develop
+  displayName: Deploy Kubernetes Develop
+  condition: |
+    and(
+      succeeded(),
+      eq(variables.GIT_BRANCH_NAME, 'develop')
+    )
+  environment: develop
+  strategy:
+    runOnce:
+      deploy:
+        steps:
+        - script: |
+            echo "Deploy docker image $(Build.SourceVersion) to AKS Develop Cluster"
+          displayName: Simple echo message
+
+        - task: Kubernetes@1
+          displayName: Deploy the image to AKS
+          inputs:
+            command: set
+            connectionType: Kubernetes Service Connection
+            kubernetesServiceEndpoint: ${{parameters.serviceConnection}}-develop
+            namespace: ${{parameters.namespace}}-develop
+            arguments: image deployment/$(Build.Repository.Name) $(Build.Repository.Name)=$(containerRegistry)/$(Build.Repository.Name):$(Build.SourceVersion)
