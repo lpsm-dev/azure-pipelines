@@ -1,0 +1,49 @@
+# ==============================================================================
+# PARAMETERS
+# ==============================================================================
+
+parameters:
+- name: autoDevOpsStaticTestTools
+  type: string
+  default: 'gitleaks'
+- name: autoDevOpsContinueOnError
+  type: string
+  default: 'unset'
+
+# ==============================================================================
+# JOBS
+# ==============================================================================
+
+jobs:
+- ${{ if contains(parameters.autoDevOpsStaticTestTools, 'commitlint') }}:
+  - job: CommitLint
+    displayName: Commit Lint
+    steps:
+    - template: Steps/commit-lint.yml
+      parameters:
+        ${{ if eq(contains(parameters.autoDevOpsContinueOnError, 'commitlint'), true) }}:
+          continueError: true
+        ${{ if eq(contains(parameters.autoDevOpsContinueOnError, 'commitlint'), false) }}:
+          continueError: false
+
+- ${{ if contains(parameters.autoDevOpsStaticTestTools, 'gitleaks') }}:
+  - job: SecretDetection
+    displayName: Secret Detection
+    steps:
+    - template: Steps/secret-detection.yml
+      parameters:
+        ${{ if eq(contains(parameters.autoDevOpsContinueOnError, 'gitleaks'), true) }}:
+          continueError: true
+        ${{ if eq(contains(parameters.autoDevOpsContinueOnError, 'gitleaks'), false) }}:
+          continueError: false
+
+- ${{ if and(eq(variables['Build.SourceBranch'], 'refs/heads/develop'), contains(parameters.autoDevOpsStaticTestTools, 'sonarqube')) }}:
+  - job: Sonarqube
+    displayName: Sonarqube
+    steps:
+    - template: Steps/sonarqube.yml
+      parameters:
+        ${{ if eq(contains(parameters.autoDevOpsContinueOnError, 'sonarqube'), true) }}:
+          continueError: true
+        ${{ if eq(contains(parameters.autoDevOpsContinueOnError, 'sonarqube'), false) }}:
+          continueError: false

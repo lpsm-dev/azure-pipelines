@@ -1,0 +1,148 @@
+# ==============================================================================
+# PARAMETERS
+# ==============================================================================
+
+parameters:
+- name: 'deploys'
+  type: object
+  default: {}
+
+# ==============================================================================
+# STEPS
+# ==============================================================================
+
+steps:
+- download: none
+
+- task: DownloadPipelineArtifact@2
+  displayName: Download Artifact
+  inputs:
+    buildType: 'current'
+    artifactName: 'drop'
+    targetPath: '$(System.DefaultWorkingDirectory)'
+
+- ${{ each deploy in parameters.deploys }}:
+  - task: AzureRmWebAppDeployment@4
+    displayName: Deploy Azure App Service ${{ deploy.name }}
+    inputs:
+      azureSubscription: '${{ deploy.azureSubscription }}'
+      WebAppName: '${{ deploy.serviceName }}'
+      packageForLinux: '$(System.DefaultWorkingDirectory)/${{ deploy.name }}.zip'
+      enableCustomDeployment: true
+
+  - ${{ if deploy.serviceSettings }}:
+    - task: AzureKeyVault@2
+      inputs:
+        azureSubscription: '${{ deploy.azureSubscription }}'
+        KeyVaultName: '${{ deploy.keyVaultName }}'
+        SecretsFilter: '*'
+        RunAsPreJob: false
+
+    - task: AzureAppServiceSettings@1
+      displayName: Azure App Service Settings ${{ deploy.name }}
+      inputs:
+        azureSubscription: '${{ deploy.azureSubscription }}'
+        appName: '${{ deploy.serviceName }}'
+        resourceGroupName: '${{ deploy.resourceGroup }}'
+        appSettings: |
+          [
+            {
+              "name": "A",
+              "value": "$(A)",
+              "slotSetting": false
+            },
+            {
+              "name": "B",
+              "value": "$(B)",
+              "slotSetting": true
+            },
+            {
+              "name": "C",
+              "value": "$(C)",
+              "slotSetting": false
+            },
+            {
+              "name": "D",
+              "value": "$(D)",
+              "slotSetting": false
+            },
+            {
+              "name": "E",
+              "value": "$(E)",
+              "slotSetting": false
+            },
+            {
+              "name": "F",
+              "value": "$(F)",
+              "slotSetting": false
+            },
+            {
+              "name": "G",
+              "value": "$(G)",
+              "slotSetting": false
+            },
+            {
+              "name": "H",
+              "value": "$(H)",
+              "slotSetting": false
+            },
+            {
+              "name": "I",
+              "value": "$(I)",
+              "slotSetting": false
+            },
+            {
+              "name": "J",
+              "value": "$(J)",
+              "slotSetting": false
+            },
+            {
+              "name": "K",
+              "value": "$(K)",
+              "slotSetting": false
+            },
+            {
+              "name": "L",
+              "value": "$(L)",
+              "slotSetting": false
+            },
+            {
+              "name": "M",
+              "value": "$(M)",
+              "slotSetting": false
+            },
+            {
+              "name": "N",
+              "value": "$(N)",
+              "slotSetting": false
+            },
+            {
+              "name": "O",
+              "value": "$(O)",
+              "slotSetting": false
+            },
+            {
+              "name": "P",
+              "value": "$(P)",
+              "slotSetting": false
+            },
+            {
+              "name": "Q",
+              "value": "$(Q)",
+              "slotSetting": false
+            },
+            {
+              "name": "R",
+              "value": "$(R)",
+              "slotSetting": false
+            }
+          ]
+        connectionStrings: |
+          [
+            {
+              "name": "S",
+              "value": "$(S)",
+              "type": "SQLServer",
+              "slotSetting": false
+            }
+          ]

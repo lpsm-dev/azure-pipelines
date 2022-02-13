@@ -2,7 +2,8 @@
   "_comment": "this project is not a node.js one, package.json is just used to define some metadata",
   "scripts": {
     "cm": "git cz",
-    "secrets": "gitleaks detect -s . -c .github/config/.gitleaks.toml"
+    "precommit": "pre-commit run -a",
+    "secrets": "gitleaks detect --config .github/config/.gitleaks.toml --verbose"
   },
   "commitlint": {
     "extends": [

@@ -1,0 +1,41 @@
+# ==============================================================================
+# PARAMETERS
+# ==============================================================================
+
+parameters:
+- name: continueError
+  type: boolean
+  default: false
+
+# ==============================================================================
+# STEPS
+# ==============================================================================
+
+steps:
+- task: SonarQubePrepare@4
+  displayName: Prepare analysis on sonarqube
+  inputs:
+    SonarQube: Sonarqube-UnicoRH
+    scannerMode: CLI
+    configMode: manual
+    cliProjectKey: $(AZURE_DEVOPS_PROJECT_NAME)-$(GIT_REPO_NAME)
+    cliProjectName: $(AZURE_DEVOPS_PROJECT_NAME)-$(GIT_REPO_NAME)
+    extraProperties: |
+      sonar.sourceEncoding=UTF-8
+      sonar.verbose=false
+      sonar.projectBaseDir=$(GIT_ROOT_PATH)
+
+- script: |
+    FILTERED_PARAMS=$(echo $SONARQUBE_SCANNER_PARAMS | sed 's/"sonar.branch.name":"[^"]*"\,//g')
+    echo "##vso[task.setvariable variable=SONARQUBE_SCANNER_PARAMS]$FILTERED_PARAMS"
+  displayName: Filter out non-CE sonar parameters
+
+- task: SonarQubeAnalyze@4
+  displayName: Run code analysis
+  timeoutInMinutes: 5
+  continueOnError: ${{ parameters.continueError }}
+
+- task: SonarQubePublish@4
+  displayName: Publish quality gate result
+  inputs:
+    pollingTimeoutSec: 300

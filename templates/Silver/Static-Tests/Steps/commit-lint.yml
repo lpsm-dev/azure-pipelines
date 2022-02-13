@@ -1,0 +1,29 @@
+# ==============================================================================
+# PARAMETERS
+# ==============================================================================
+
+parameters:
+- name: continueError
+  type: boolean
+  default: false
+
+# ==============================================================================
+# STEPS
+# ==============================================================================
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '16.x'
+  displayName: Install node
+
+- bash: |
+    npm install -D @commitlint/cli@16.1.0 \
+      @commitlint/config-conventional@16.0.0
+  displayName: Install commit-lint dependencies
+
+- bash: |
+    echo $(Build.SourceVersionMessage) | \
+      npx commitlint -x @commitlint/config-conventional --verbose
+  displayName: Running commit-lint
+  continueOnError: ${{ parameters.continueError }}
