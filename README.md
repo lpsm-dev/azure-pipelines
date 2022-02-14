@@ -2,7 +2,7 @@
   <img alt="azure" src="https://cdn.dribbble.com/users/3847465/screenshots/10765125/media/e5f08353be5952c5bfd4a759903d5c5a.gif" width="350px" float="center"/>
 </p>
 
-<h2 align="center">🌊 Shared Azure Pipelines 🌊</h2>
+<h2 align="center">🌊 Shared azure pipelines 🌊</h2>
 
 <div align="center">
 
@@ -20,7 +20,7 @@
 </p>
 
 <p align="center">
-  ✨ Collection of some Azure Pipelines templates ✨
+  ✨ A collection of some templates to azure pipelines ✨
 </p>
 
 <p align="center">
