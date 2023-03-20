@@ -22,10 +22,10 @@
     "@semantic-release/commit-analyzer": "9.0.2",
     "@semantic-release/exec": "6.0.3",
     "@semantic-release/git": "10.0.1",
-    "@semantic-release/gitlab": "9.5.1",
+    "@semantic-release/gitlab": "12.0.0",
     "@semantic-release/release-notes-generator": "10.0.3",
     "commitizen": "4.3.0",
-    "semantic-release": "19.0.5"
+    "semantic-release": "20.1.3"
   },
   "resolutions": {
     "ansi-regex": "^6.0.0",
