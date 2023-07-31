@@ -29,6 +29,6 @@
   },
   "resolutions": {
     "ansi-regex": "^6.0.0",
-    "marked": "^4.0.10"
+    "marked": "^6.0.0"
   }
 }
