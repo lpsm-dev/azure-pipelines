@@ -5,15 +5,35 @@
 
 <img src="https://github.com/lpsm-dev/lpsm-dev/blob/c0a3ab229fd29a76e169dbe846412b5132af63b5/.github/assets/azure-pipelines.png" width="350"/>
 
+## Azure Pipelines
+
+Hello Human 👽! Bem-vindo ao meu repositório 👋
+
+Vamos criar umas pipelines de CI/CD com o Azure DevOps? 🚀
+
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](https://www.conventionalcommits.org/en/v1.0.0/)
 [![Semantic Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://semantic-release.gitbook.io/semantic-release/usage/configuration)
 [![Built with Devbox](https://jetpack.io/img/devbox/shield_galaxy.svg)](https://jetpack.io/devbox/docs/contributor-quickstart/)
 
-#### Hello Human 👽! Bem-vindo ao meu repositório 👋
-
-Vamos criar umas pipelines de CI/CD com o Azure DevOps? 🚀
-
 </div>
+
+# Sumário
+
+<details>
+  <summary><strong>Expandir</strong></summary>
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+  <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+- [Description](#description)
+- [Usage](#usage)
+- [Versionamento](#versionamento)
+- [Troubleshooting](#troubleshooting)
+- [Show your support](#show-your-support)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+  <p align="right">(<a href="#readme-top">back to top</a>)</p>
+</details>
 
 # Description
 

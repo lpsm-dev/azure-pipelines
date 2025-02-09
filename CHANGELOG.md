@@ -1,3 +1,15 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Semantic Versioning Changelog](#semantic-versioning-changelog)
+  - [1.0.0 (2022-02-14)](#100-2022-02-14)
+    - [:sparkles: News](#sparkles-news)
+    - [:memo: Docs](#memo-docs)
+    - [:bug: Fixes](#bug-fixes)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Semantic Versioning Changelog
 
 ## 1.0.0 (2022-02-14)
