@@ -68,7 +68,7 @@ Links relevantes para esse projeto:
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-# Contributing
+# Contribuição
 
 Gostaria de contribuir? Isso é ótimo! Temos um guia de contribuição para te ajudar. Clique [aqui](CONTRIBUTING.md) para lê-lo.
 
