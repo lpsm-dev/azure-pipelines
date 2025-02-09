@@ -61,8 +61,7 @@ Vamos criar umas pipelines de CI/CD com o Azure DevOps? 🚀
 
 Links relevantes para esse projeto:
 
-- [Metacontroller Docs](https://metacontroller.github.io/metacontroller/intro.html)
-- [What is a Kubernetes Controller?](https://book-v1.book.kubebuilder.io/basics/what_is_a_controller.html)
+- [Azure DevOps](https://dev.azure.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -80,7 +79,7 @@ Para verificar o histórico de mudanças, acesse o arquivo [**CHANGELOG.md**](CH
 
 # Troubleshooting
 
-Se você tiver algum problema, abra uma [issue](https://github.com/lpsm-dev/dotfiles/issues/new/choose) nesse projeto.
+Se você tiver algum problema, abra uma [issue](https://github.com/lpsm-dev/azure-pipelines/issues/new/choose) nesse projeto.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
