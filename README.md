@@ -29,6 +29,9 @@ Vamos criar umas pipelines de CI/CD com o Azure DevOps? 🚀
 - [Implementação](#implementa%C3%A7%C3%A3o)
   - [Pré-requisitos](#pr%C3%A9-requisitos)
   - [Passo a passo](#passo-a-passo)
+- [Entendendo](#entendendo)
+  - [O que é Azure DevOps?](#o-que-%C3%A9-azure-devops)
+  - [O que é Azure Pipelines?](#o-que-%C3%A9-azure-pipelines)
 - [Referências](#refer%C3%AAncias)
 - [Contribuição](#contribui%C3%A7%C3%A3o)
 - [Versionamento](#versionamento)
@@ -54,6 +57,14 @@ Vamos criar umas pipelines de CI/CD com o Azure DevOps? 🚀
 ## Pré-requisitos
 
 ## Passo a passo
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+# Entendendo
+
+## O que é Azure DevOps?
+
+## O que é Azure Pipelines?
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
