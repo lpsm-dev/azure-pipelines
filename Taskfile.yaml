@@ -30,7 +30,7 @@ tasks:
       - sh: which gitleaks
         msg: gitleaks {{.PATH_ERROR}}
     cmds:
-      - gitleaks detect --source={{.ROOT_DIR}} --config={{.ROOT_DIR}}/.github/config/.gitleaks.toml --verbose
+      - gitleaks detect --source={{.ROOT_DIR}} --verbose
 
   yamllint:
     desc: Run the yamllint linter on all YAML files

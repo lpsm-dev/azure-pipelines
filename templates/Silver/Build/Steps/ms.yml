@@ -1,36 +1,33 @@
-# ==============================================================================
-# STEPS
-# ==============================================================================
-
+---
 steps:
-- task: NuGetToolInstaller@1
-  displayName: Use NuGet 5.8.0
-  inputs:
-    versionSpec: 5.8.0
+  - task: NuGetToolInstaller@1
+    displayName: Use NuGet 5.8.0
+    inputs:
+      versionSpec: 5.8.0
 
-- task: NuGetCommand@2
-  displayName: NuGet restore
-  inputs:
-    restoreSolution: $(SOLUTION_PATH)
-    restoreDirectory: packages
+  - task: NuGetCommand@2
+    displayName: NuGet restore
+    inputs:
+      restoreSolution: $(SOLUTION_PATH)
+      restoreDirectory: packages
 
-- task: MSBuild@1
-  displayName: Build solution
-  inputs:
-    solution: $(SOLUTION_PATH)
-    msbuildArchitecture: x64
-    platform: any cpu
-    configuration: release
-    msbuildArguments: /p:DeployOnBuild=true
-      /p:WebPublishMethod=Package
-      /p:PackageAsSingleFile=true
-      /p:SkipInvalidConfigurations=true
-      /p:PackageLocation="$(Build.ArtifactStagingDirectory)\\"
-    maximumCpuCount: true
+  - task: MSBuild@1
+    displayName: Build solution
+    inputs:
+      solution: $(SOLUTION_PATH)
+      msbuildArchitecture: x64
+      platform: any cpu
+      configuration: release
+      msbuildArguments: /p:DeployOnBuild=true
+        /p:WebPublishMethod=Package
+        /p:PackageAsSingleFile=true
+        /p:SkipInvalidConfigurations=true
+        /p:PackageLocation="$(Build.ArtifactStagingDirectory)\\"
+      maximumCpuCount: true
 
-- task: PublishBuildArtifacts@1
-  displayName: Publish artifact
-  inputs:
-    pathToPublish: $(Build.ArtifactStagingDirectory)
-    artifactName: drop
-  condition: succeededOrFailed()
+  - task: PublishBuildArtifacts@1
+    displayName: Publish artifact
+    inputs:
+      pathToPublish: $(Build.ArtifactStagingDirectory)
+      artifactName: drop
+    condition: succeededOrFailed()

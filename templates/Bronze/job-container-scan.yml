@@ -1,54 +1,54 @@
+---
 parameters:
-- name: imageRepository
-  displayName: Image repository name
-  type: string
-  default: $(Build.Repository.Name)
-- name: serviceConnection
-  displayName: Docker Service Connection name
-  type: string
-  default: ''
-- name: containerRegistry
-  displayName: Docker container registry
-  type: string
-  default: ''
-- name: continueError
-  displayName: Enable continue on error
-  type: boolean
-  default: false
+  - name: imageRepository
+    displayName: Image repository name
+    type: string
+    default: $(Build.Repository.Name)
+  - name: serviceConnection
+    displayName: Docker Service Connection name
+    type: string
+    default: ""
+  - name: containerRegistry
+    displayName: Docker container registry
+    type: string
+    default: ""
+  - name: continueError
+    displayName: Enable continue on error
+    type: boolean
+    default: false
 
 jobs:
+  # ==============================================================================
+  # CONTAINER SCANNING
+  # ==============================================================================
 
-# ==============================================================================
-# CONTAINER SCANNING
-# ==============================================================================
+  - job: Container_Scanning
+    displayName: Container scanning
+    continueOnError: ${{parameters.continueError}}
+    steps:
+      - task: Docker@2
+        displayName: Login to ACR
+        inputs:
+          command: login
+          containerRegistry: ${{parameters.serviceConnection}}
 
-- job: Container_Scanning
-  displayName: Container scanning
-  continueOnError: ${{parameters.continueError}}
-  steps:
-  - task: Docker@2
-    displayName: Login to ACR
-    inputs:
-      command: login
-      containerRegistry: ${{parameters.serviceConnection}}
+      - script: |
+          sudo apt-get install rpm
+          wget https://github.com/aquasecurity/trivy/releases/download/v$(TRIVY_VERSION)/trivy_$(TRIVY_VERSION)_Linux-64bit.deb
+          sudo dpkg -i trivy_$(TRIVY_VERSION)_Linux-64bit.deb
+          trivy -v
+        displayName: Download and install Trivy
 
-  - script: |
-      sudo apt-get install rpm
-      wget https://github.com/aquasecurity/trivy/releases/download/v$(TRIVY_VERSION)/trivy_$(TRIVY_VERSION)_Linux-64bit.deb
-      sudo dpkg -i trivy_$(TRIVY_VERSION)_Linux-64bit.deb
-      trivy -v
-    displayName: Download and install Trivy
+      - task: CmdLine@2
+        displayName: Run trivy scan
+        continueOnError: true
+        inputs:
+          script: |
+            trivy image --exit-code 0 --severity LOW,MEDIUM ${{parameters.containerRegistry}}/${{parameters.imageRepository}}:$(Build.SourceVersion)
+            trivy image --exit-code 1 --severity HIGH,CRITICAL ${{parameters.containerRegistry}}/${{parameters.imageRepository}}:$(Build.SourceVersion)
 
-  - task: CmdLine@2
-    displayName: Run trivy scan
-    continueOnError: true
-    inputs:
-      script: |
-        trivy image --exit-code 0 --severity LOW,MEDIUM ${{parameters.containerRegistry}}/${{parameters.imageRepository}}:$(Build.SourceVersion)
-        trivy image --exit-code 1 --severity HIGH,CRITICAL ${{parameters.containerRegistry}}/${{parameters.imageRepository}}:$(Build.SourceVersion)
-
-  - task: Docker@2
-    displayName: Logout of ACR
-    inputs:
-      command: logout
-      containerRegistry: ${{parameters.serviceConnection}}
+      - task: Docker@2
+        displayName: Logout of ACR
+        inputs:
+          command: logout
+          containerRegistry: ${{parameters.serviceConnection}}

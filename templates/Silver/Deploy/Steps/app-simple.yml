@@ -1,8 +1,4 @@
-# ==============================================================================
-# STEPS
-# ==============================================================================
-
+---
 steps:
-- download: none
-
-- script: echo Deploy to Azure App Service!
+  - download: none
+  - script: echo Deploy to Azure App Service!

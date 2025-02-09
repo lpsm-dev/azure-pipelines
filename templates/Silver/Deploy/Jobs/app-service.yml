@@ -1,82 +1,83 @@
+---
 # ==============================================================================
 # PARAMETERS
 # ==============================================================================
 
 parameters:
-- name: 'applicationsDevelop'
-  type: object
-  default: {}
-- name: 'applicationsHomolog'
-  type: object
-  default: {}
-- name: 'applicationsImplantation'
-  type: object
-  default: {}
-- name: 'applicationsProduction'
-  type: object
-  default: {}
+  - name: "applicationsDevelop"
+    type: object
+    default: {}
+  - name: "applicationsHomolog"
+    type: object
+    default: {}
+  - name: "applicationsImplantation"
+    type: object
+    default: {}
+  - name: "applicationsProduction"
+    type: object
+    default: {}
 
 # ==============================================================================
 # JOBS
 # ==============================================================================
 
 jobs:
-- ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/develop') }}:
-  - deployment: DeployDevelop
-    displayName: Develop
-    pool:
-      vmImage: windows-2022
-    environment:
-      name: develop
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - template: ../Steps/app-service.yml
-            parameters:
-              deploys: ${{ parameters.applicationsDevelop }}
+  - ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/develop') }}:
+      - deployment: DeployDevelop
+        displayName: Develop
+        pool:
+          vmImage: windows-2022
+        environment:
+          name: develop
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - template: ../Steps/app-service.yml
+                  parameters:
+                    deploys: ${{ parameters.applicationsDevelop }}
 
-- ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/homolog') }}:
-  - deployment: DeployHomolog
-    displayName: Homolog
-    pool:
-      vmImage: windows-2022
-    environment:
-      name: homolog
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - template: ../Steps/app-service.yml
-            parameters:
-              deploys: ${{ parameters.applicationsHomolog }}
+  - ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/homolog') }}:
+      - deployment: DeployHomolog
+        displayName: Homolog
+        pool:
+          vmImage: windows-2022
+        environment:
+          name: homolog
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - template: ../Steps/app-service.yml
+                  parameters:
+                    deploys: ${{ parameters.applicationsHomolog }}
 
-- ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/implantation') }}:
-  - deployment: DeployImplantation
-    displayName: Implantation
-    pool:
-      vmImage: windows-2022
-    environment:
-      name: implantation
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - template: ../Steps/app-service.yml
-            parameters:
-              deploys: ${{ parameters.applicationsImplantation }}
+  - ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/implantation') }}:
+      - deployment: DeployImplantation
+        displayName: Implantation
+        pool:
+          vmImage: windows-2022
+        environment:
+          name: implantation
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - template: ../Steps/app-service.yml
+                  parameters:
+                    deploys: ${{ parameters.applicationsImplantation }}
 
-- ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/main') }}:
-  - deployment: DeployProduction
-    displayName: Production
-    pool:
-      vmImage: windows-2022
-    environment:
-      name: production
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - template: ../Steps/app-service.yml
-            parameters:
-              deploys: ${{ parameters.applicationsProduction }}
+  - ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/main') }}:
+      - deployment: DeployProduction
+        displayName: Production
+        pool:
+          vmImage: windows-2022
+        environment:
+          name: production
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - template: ../Steps/app-service.yml
+                  parameters:
+                    deploys: ${{ parameters.applicationsProduction }}

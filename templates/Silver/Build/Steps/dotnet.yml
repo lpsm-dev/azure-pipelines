@@ -1,37 +1,34 @@
-# ==============================================================================
-# STEPS
-# ==============================================================================
-
+---
 steps:
-- task: DotNetCoreCLI@2
-  displayName: Restore artifact
-  inputs:
-    command: restore
-    projects: $(SOLUTION_PATH)
+  - task: DotNetCoreCLI@2
+    displayName: Restore artifact
+    inputs:
+      command: restore
+      projects: $(SOLUTION_PATH)
 
-- task: DotNetCoreCLI@2
-  displayName: Build artifact
-  inputs:
-    arguments: --output Release
-    projects: $(SOLUTION_PATH)
+  - task: DotNetCoreCLI@2
+    displayName: Build artifact
+    inputs:
+      arguments: --output Release
+      projects: $(SOLUTION_PATH)
 
-- task: DotNetCoreCLI@2
-  displayName: Dotnet publish
-  inputs:
-    command: publish
-    publishWebProjects: True
-    arguments: --output $(Build.ArtifactStagingDirectory)
-    zipAfterPublish: True
+  - task: DotNetCoreCLI@2
+    displayName: Dotnet publish
+    inputs:
+      command: publish
+      publishWebProjects: true
+      arguments: --output $(Build.ArtifactStagingDirectory)
+      zipAfterPublish: true
 
-- task: DeleteFiles@1
-  displayName: Delete appsettings
-  inputs:
-    SourceFolder: $(Build.ArtifactStagingDirectory)
-    Contents: 'appsettings.*'
+  - task: DeleteFiles@1
+    displayName: Delete appsettings
+    inputs:
+      SourceFolder: $(Build.ArtifactStagingDirectory)
+      Contents: "appsettings.*"
 
-- task: PublishBuildArtifacts@1
-  displayName: Publish artifact
-  inputs:
-    pathToPublish: $(Build.ArtifactStagingDirectory)
-    artifactName: drop
-  condition: succeededOrFailed()
+  - task: PublishBuildArtifacts@1
+    displayName: Publish artifact
+    inputs:
+      pathToPublish: $(Build.ArtifactStagingDirectory)
+      artifactName: drop
+    condition: succeededOrFailed()

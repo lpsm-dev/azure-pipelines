@@ -1,34 +1,35 @@
+---
 # ==============================================================================
 # PARAMETERS
 # ==============================================================================
 
 parameters:
-- name: buildType
-  type: string
-  default: 'unset'
-- name: solutionPath
-  type: string
-  default: 'unset'
+  - name: buildType
+    type: string
+    default: "unset"
+  - name: solutionPath
+    type: string
+    default: "unset"
 
 # ==============================================================================
 # JOBS
 # ==============================================================================
 
 jobs:
-- ${{ if eq(parameters.buildType, 'dotnet') }}:
-  - job: Dotnet
-    displayName: Dotnet
-    variables:
-      SOLUTION_PATH: ${{ parameters.solutionPath }}
-    steps:
-    - template: ../Steps/dotnet.yml
+  - ${{ if eq(parameters.buildType, 'dotnet') }}:
+      - job: Dotnet
+        displayName: Dotnet
+        variables:
+          SOLUTION_PATH: ${{ parameters.solutionPath }}
+        steps:
+          - template: ../Steps/dotnet.yml
 
-- ${{ if eq(parameters.buildType, 'ms') }}:
-  - job: MS
-    displayName: Microsoft Build
-    pool:
-      vmImage: windows-2019
-    variables:
-      SOLUTION_PATH: ${{ parameters.solutionPath }}
-    steps:
-    - template: ../Steps/ms.yml
+  - ${{ if eq(parameters.buildType, 'ms') }}:
+      - job: MS
+        displayName: Microsoft Build
+        pool:
+          vmImage: windows-2019
+        variables:
+          SOLUTION_PATH: ${{ parameters.solutionPath }}
+        steps:
+          - template: ../Steps/ms.yml

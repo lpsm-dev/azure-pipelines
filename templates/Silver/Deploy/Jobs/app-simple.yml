@@ -1,44 +1,41 @@
-# ==============================================================================
-# JOBS
-# ==============================================================================
-
+---
 jobs:
-- ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/develop') }}:
-  - deployment: DeployDevelop
-    displayName: Simple develop
-    environment: develop
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - template: ../Steps/app-simple.yml
+  - ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/develop') }}:
+      - deployment: DeployDevelop
+        displayName: Simple develop
+        environment: develop
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - template: ../Steps/app-simple.yml
 
-- ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/homolog') }}:
-  - deployment: DeployHomolog
-    displayName: Simple homolog
-    environment: homolog
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - template: ../Steps/app-simple.yml
+  - ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/homolog') }}:
+      - deployment: DeployHomolog
+        displayName: Simple homolog
+        environment: homolog
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - template: ../Steps/app-simple.yml
 
-- ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/implantation') }}:
-  - deployment: DeployImplantation
-    displayName: Simple implantation
-    environment: implantation
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - template: ../Steps/app-simple.yml
+  - ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/implantation') }}:
+      - deployment: DeployImplantation
+        displayName: Simple implantation
+        environment: implantation
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - template: ../Steps/app-simple.yml
 
-- ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/main') }}:
-  - deployment: DeployProduction
-    displayName: Simple production
-    environment: production
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - template: ../Steps/app-simple.yml
+  - ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/main') }}:
+      - deployment: DeployProduction
+        displayName: Simple production
+        environment: production
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - template: ../Steps/app-simple.yml

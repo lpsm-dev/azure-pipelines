@@ -1,12 +1,13 @@
+---
 variables:
-  AZURE_DEVOPS_PROJECT_NAME:  $[lower(variables['System.TeamProject'])]
-  GIT_REPO_NAME:              $(Build.Repository.Name)
-  GIT_ROOT_PATH:              $(Build.SourcesDirectory)
-  isDevelop:  ${{ eq(variables['Build.SourceBranch'], 'refs/heads/develop') }}
-  isStage:    ${{ eq(variables['Build.SourceBranch'], 'refs/heads/stage') }}
-  isMain:     ${{ eq(variables['Build.SourceBranch'], 'refs/heads/main') }}
-  isTag:      ${{ startsWith(variables['Build.SourceBranch'], 'refs/tags/v') }}
-  isPR:       ${{ eq(variables['Build.Reason'], 'PullRequest') }}
+  AZURE_DEVOPS_PROJECT_NAME: $[lower(variables['System.TeamProject'])]
+  GIT_REPO_NAME: $(Build.Repository.Name)
+  GIT_ROOT_PATH: $(Build.SourcesDirectory)
+  isDevelop: ${{ eq(variables['Build.SourceBranch'], 'refs/heads/develop') }}
+  isStage: ${{ eq(variables['Build.SourceBranch'], 'refs/heads/stage') }}
+  isMain: ${{ eq(variables['Build.SourceBranch'], 'refs/heads/main') }}
+  isTag: ${{ startsWith(variables['Build.SourceBranch'], 'refs/tags/v') }}
+  isPR: ${{ eq(variables['Build.Reason'], 'PullRequest') }}
   ${{ if startsWith(variables['Build.SourceBranch'], 'refs/heads/') }}:
     branchName: $[ replace(variables['Build.SourceBranch'], 'refs/heads/', '') ]
   ${{ if startsWith(variables['Build.SourceBranch'], 'refs/pull/') }}:

@@ -1,119 +1,119 @@
+---
 parameters:
-- name: imageRepository
-  displayName: Image repository name
-  type: string
-  default: ''
-- name: serviceConnection
-  displayName: Docker Service Connection name
-  type: string
-  default: ''
-- name: extraArgs
-  displayName: Docker extra args
-  type: string
-  default: ''
+  - name: imageRepository
+    displayName: Image repository name
+    type: string
+    default: ""
+  - name: serviceConnection
+    displayName: Docker Service Connection name
+    type: string
+    default: ""
+  - name: extraArgs
+    displayName: Docker extra args
+    type: string
+    default: ""
 
 jobs:
+  # ==============================================================================
+  # BUILD PRODUCTION
+  # ==============================================================================
 
-# ==============================================================================
-# BUILD PRODUCTION
-# ==============================================================================
+  - job: Build_Production
+    displayName: Docker Build Production
+    condition: |
+      and(
+        succeeded(),
+        eq(variables.GIT_BRANCH_NAME, 'main')
+      )
+    steps:
+      - task: Docker@2
+        displayName: Build image
+        inputs:
+          command: build
+          containerRegistry: ${{parameters.serviceConnection}}
+          repository: ${{parameters.imageRepository}}
+          dockerfile: $(GIT_ROOT_PATH)/Dockerfile
+          arguments: ${{parameters.extraArgs}}
+          tags: |
+            $(Build.SourceVersion)
+            $(GIT_BRANCH_NAME)
+            latest
 
-- job: Build_Production
-  displayName: Docker Build Production
-  condition: |
-    and(
-      succeeded(),
-      eq(variables.GIT_BRANCH_NAME, 'main')
-    )
-  steps:
-  - task: Docker@2
-    displayName: Build image
-    inputs:
-      command: build
-      containerRegistry: ${{parameters.serviceConnection}}
-      repository: ${{parameters.imageRepository}}
-      dockerfile: $(GIT_ROOT_PATH)/Dockerfile
-      arguments: ${{parameters.extraArgs}}
-      tags: |
-        $(Build.SourceVersion)
-        $(GIT_BRANCH_NAME)
-        latest
+      - task: Docker@2
+        displayName: Push image to ACR
+        inputs:
+          command: push
+          containerRegistry: ${{parameters.serviceConnection}}
+          repository: ${{parameters.imageRepository}}
+          tags: |
+            $(Build.SourceVersion)
+            $(GIT_BRANCH_NAME)
+            latest
 
-  - task: Docker@2
-    displayName: Push image to ACR
-    inputs:
-      command: push
-      containerRegistry: ${{parameters.serviceConnection}}
-      repository: ${{parameters.imageRepository}}
-      tags: |
-        $(Build.SourceVersion)
-        $(GIT_BRANCH_NAME)
-        latest
+  # ==============================================================================
+  # BUILD STAGE
+  # ==============================================================================
 
-# ==============================================================================
-# BUILD STAGE
-# ==============================================================================
+  - job: Build_Stage
+    displayName: Docker Build Stage
+    condition: |
+      and(
+        succeeded(),
+        eq(variables.GIT_BRANCH_NAME, 'stage')
+      )
+    steps:
+      - task: Docker@2
+        displayName: Build image
+        inputs:
+          command: build
+          containerRegistry: ${{parameters.serviceConnection}}
+          repository: ${{parameters.imageRepository}}
+          dockerfile: $(GIT_ROOT_PATH)/Dockerfile
+          arguments: ${{parameters.extraArgs}}
+          tags: |
+            $(Build.SourceVersion)
+            $(GIT_BRANCH_NAME)
 
-- job: Build_Stage
-  displayName: Docker Build Stage
-  condition: |
-    and(
-      succeeded(),
-      eq(variables.GIT_BRANCH_NAME, 'stage')
-    )
-  steps:
-  - task: Docker@2
-    displayName: Build image
-    inputs:
-      command: build
-      containerRegistry: ${{parameters.serviceConnection}}
-      repository: ${{parameters.imageRepository}}
-      dockerfile: $(GIT_ROOT_PATH)/Dockerfile
-      arguments: ${{parameters.extraArgs}}
-      tags: |
-        $(Build.SourceVersion)
-        $(GIT_BRANCH_NAME)
+      - task: Docker@2
+        displayName: Push image to ACR
+        inputs:
+          command: push
+          containerRegistry: ${{parameters.serviceConnection}}
+          repository: ${{parameters.imageRepository}}
+          tags: |
+            $(Build.SourceVersion)
+            $(GIT_BRANCH_NAME)
 
-  - task: Docker@2
-    displayName: Push image to ACR
-    inputs:
-      command: push
-      containerRegistry: ${{parameters.serviceConnection}}
-      repository: ${{parameters.imageRepository}}
-      tags: |
-        $(Build.SourceVersion)
-        $(GIT_BRANCH_NAME)
+  # ==============================================================================
+  # BUILD DEVELOP
+  # ==============================================================================
 
-# ==============================================================================
-# BUILD DEVELOP
-# ==============================================================================
+  - job: Build_Develop
+    displayName: Docker Build Develop
+    condition: |
+      and(
+        succeeded(),
+        eq(variables.GIT_BRANCH_NAME, 'develop')
+      )
+    steps:
+      - task: Docker@2
+        displayName: Build image
+        inputs:
+          command: build
+          containerRegistry: ${{parameters.serviceConnection}}
+          repository: ${{parameters.imageRepository}}
+          dockerfile: $(GIT_ROOT_PATH)/Dockerfile
+          arguments: ${{parameters.extraArgs}}
+          tags: |
+            $(Build.SourceVersion)
+            $(GIT_BRANCH_NAME)
 
-- job: Build_Develop
-  displayName: Docker Build Develop
-  condition: |
-    and(
-      succeeded(),
-      eq(variables.GIT_BRANCH_NAME, 'develop')
-    )
-  steps:
-  - task: Docker@2
-    displayName: Build image
-    inputs:
-      command: build
-      containerRegistry: ${{parameters.serviceConnection}}
-      repository: ${{parameters.imageRepository}}
-      dockerfile: $(GIT_ROOT_PATH)/Dockerfile
-      arguments: ${{parameters.extraArgs}}
-      tags: |
-        $(Build.SourceVersion)
-        $(GIT_BRANCH_NAME)
-
-  - task: Docker@2
-    displayName: Push image to ACR
-    inputs:
-      command: push
-      containerRegistry: ${{parameters.serviceConnection}}
-      repository: ${{parameters.imageRepository}}
-      tags: |
-        $(Build.SourceVersion)
-        $(GIT_BRANCH_NAME)
+      - task: Docker@2
+        displayName: Push image to ACR
+        inputs:
+          command: push
+          containerRegistry: ${{parameters.serviceConnection}}
+          repository: ${{parameters.imageRepository}}
+          tags: |
+            $(Build.SourceVersion)
+            $(GIT_BRANCH_NAME)

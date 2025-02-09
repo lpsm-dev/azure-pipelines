@@ -1,12 +1,13 @@
 ---
 extends: default
-ignore: |
-  *charts*
 rules:
+  new-lines: disable
   line-length:
-    max: 400
+    max: 300
     level: warning
   indentation:
     spaces: 2
     indent-sequences: true
-  truthy: disable
+  comments-indentation: disable
+  truthy:
+    check-keys: false
