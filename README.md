@@ -32,7 +32,7 @@ Vamos criar umas pipelines de CI/CD com o Azure DevOps? 🚀
   - [Pré-requisitos](#pr%C3%A9-requisitos)
   - [Passo a passo](#passo-a-passo)
 - [Referências](#refer%C3%AAncias)
-- [Contributing](#contributing)
+- [Contribuição](#contribui%C3%A7%C3%A3o)
 - [Versionamento](#versionamento)
 - [Troubleshooting](#troubleshooting)
 - [Show your support](#show-your-support)
