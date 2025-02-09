@@ -37,27 +37,21 @@ Vamos criar umas pipelines de CI/CD com o Azure DevOps? 🚀
 
 </details>
 
-# Description
+# Usando
 
-Azure pipelines is a cloud service that you can use to automatically build and test your code project and make it available to other users. It works with just about any language or project type.
+## 1. Configurar a conexão de serviço com o GitHub
 
-Azure pipelines combines continuous integration (CI) and continuous delivery (CD) to constantly and consistently test and build your code and ship it to any target.
+Recomenda-se utilizar um nome genérico, como `github`, para que forks do repositório possam configurar a mesma conexão. Para isso, acesse o painel do **Azure DevOps** e navegue até:
 
-**Azure Marketplace**
+**`Project Settings => Service connections`**
 
-- [SonarQube (Hosted version - The version we will use in this blog post)](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarqube)
+Lá, você poderá criar uma nova conexão de serviço com o GitHub.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+No exemplo abaixo, estou utilizando o nome do endpoint como `github`.
 
-# Usage
+## 2. Adicionar a configuração no `azure-pipelines.yml`
 
-> First configure a github service connection
-
-It is suggested to use a generic name, such as `github` so forks can also configure the same. You can find this in `Project Settings => Service connections` in the `Azure Devops` dashboard for your project.
-
-Below I'm using the endpoint name `github`.
-
-> Next add this to the beginning of your azure-pipelines.yml
+Inclua o seguinte trecho no início do seu arquivo `azure-pipelines.yml`:
 
 ```yml
 resources:
@@ -65,11 +59,11 @@ resources:
     - repository: lpmatos
       type: github
       endpoint: github
-      name: lpmatos/azure-pipelines
+      name: <your-ref>
       ref: "refs/heads/master"
 ```
 
-this will make the templates in this repository available in the `lpmatos` namespace.
+Essa configuração tornará os templates deste repositório acessíveis no namespace
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
