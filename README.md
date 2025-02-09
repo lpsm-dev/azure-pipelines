@@ -35,15 +35,13 @@
 
 If you want contribute on this project, first you need to make a **git clone**:
 
->
 > 1. git clone --depth 1 https://github.com/lpmatos/azure-pipelines.git -b master
->
 
 This will give you access to the code on your **local machine**.
 
 ## ➤ Description <a name = "description"></a>
 
-Azure pipelines is a cloud service that you can use to automatically build and test your code project and make it available to other users. It works with just about any language or project type. 
+Azure pipelines is a cloud service that you can use to automatically build and test your code project and make it available to other users. It works with just about any language or project type.
 
 Azure pipelines combines continuous integration (CI) and continuous delivery (CD) to constantly and consistently test and build your code and ship it to any target.
 
@@ -51,19 +49,15 @@ Azure pipelines combines continuous integration (CI) and continuous delivery (CD
 
 - [SonarQube (Hosted version - The version we will use in this blog post)](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarqube)
 
-## ➤ Usage <a name = "usage"></a>
+# Usage
 
->
 > First configure a github service connection
->
 
 It is suggested to use a generic name, such as `github` so forks can also configure the same. You can find this in `Project Settings => Service connections` in the `Azure Devops` dashboard for your project.
 
 Below I'm using the endpoint name `github`.
 
->
 > Next add this to the beginning of your azure-pipelines.yml
->
 
 ```yml
 resources:
@@ -72,51 +66,37 @@ resources:
       type: github
       endpoint: github
       name: lpmatos/azure-pipelines
-      ref: 'refs/heads/master'
+      ref: "refs/heads/master"
 ```
 
 this will make the templates in this repository available in the `lpmatos` namespace.
 
-## ➤ Author <a name = "author"></a>
+# Versionamento
 
-👤 Hey!! If you like this project or if you find some bugs feel free to contact me in my channels:
+Para verificar o histórico de mudanças, acesse o arquivo [**CHANGELOG.md**](CHANGELOG.md).
 
->
-> * Linktree: https://linktr.ee/lpmatos
->
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## ➤ Versioning <a name = "versioning"></a>
+# Troubleshooting
 
-To check the change history, please access the [**CHANGELOG.md**](CHANGELOG.md) file.
+Se você tiver algum problema, abra uma [issue](https://github.com/lpsm-dev/dotfiles/issues/new/choose) nesse projeto.
 
-## ➤ Project status <a name = "project-status"></a>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-Currently the project is constantly being updated! 👾
-
-## ➤ Donations <a name = "donations"></a>
-
-If my work has impacted your life in a positive way and you'd like to buy me a coffee (or a hundred), that'd be much appreciated!
-
-<p align="center">
-  <a href="https://www.blockchain.com/pt/btc/address/bc1qn50elv826qs2qd6xhfh6n79649epqyaqmtwky5">
-    <img alt="BTC Address" src="https://img.shields.io/badge/BTC%20Address-black?style=for-the-badge&logo=bitcoin&logoColor=white">
-  </a>
-
-  <a href="https://live.blockcypher.com/ltc/address/ltc1qwzrxmlmzzx68k2dnrcrplc4thadm75khzrznjw/">
-    <img alt="LTC Address" src="https://img.shields.io/badge/LTC%20Address-black?style=for-the-badge&logo=litecoin&logoColor=white">
-  </a>
-</p>
-
-## ➤ Show your support <a name = "show-your-support"></a>
+# Show your support
 
 <div align="center">
 
-Give me a ⭐️ if this project helped you!
+Dê uma ⭐️ para este projeto se ele te ajudou!
 
-<p>
-  <img alt="gif-header" src="https://www.icegif.com/wp-content/uploads/baby-yoda-bye-bye-icegif.gif" width="350px" float="center"/>
-</p>
+<img src="https://github.com/lpsm-dev/lpsm-dev/blob/0062b174ec9877e6dfc78817f314b4a0690f63ff/.github/assets/yoda.gif" width="225"/>
 
-Made with 💜 by [me](https://github.com/lpmatos) 👋 inspired on [readme-md-generator](https://github.com/kefranabg/readme-md-generator)
+<br>
+<br>
+
+Feito com 💜 pelo **Time de DevOps** :wave: inspirado no [readme-md-generator](https://github.com/kefranabg/readme-md-generator)
 
 </div>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<!-- END_DOCS -->
