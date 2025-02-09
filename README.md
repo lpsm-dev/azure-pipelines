@@ -21,9 +21,9 @@ Vamos criar umas pipelines de CI/CD com o Azure DevOps? 🚀
 
 <details>
   <summary><strong>Expandir</strong></summary>
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-  <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 - [Description](#description)
 - [Usage](#usage)
@@ -32,7 +32,9 @@ Vamos criar umas pipelines de CI/CD com o Azure DevOps? 🚀
 - [Show your support](#show-your-support)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-  <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 </details>
 
 # Description
