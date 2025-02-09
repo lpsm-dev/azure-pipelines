@@ -25,8 +25,14 @@ Vamos criar umas pipelines de CI/CD com o Azure DevOps? 🚀
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [Description](#description)
-- [Usage](#usage)
+- [Visão Geral](#vis%C3%A3o-geral)
+  - [Objetivo](#objetivo)
+  - [Contexto e Motivação](#contexto-e-motiva%C3%A7%C3%A3o)
+- [Implementação](#implementa%C3%A7%C3%A3o)
+  - [Pré-requisitos](#pr%C3%A9-requisitos)
+  - [Passo a passo](#passo-a-passo)
+- [Referências](#refer%C3%AAncias)
+- [Contributing](#contributing)
 - [Versionamento](#versionamento)
 - [Troubleshooting](#troubleshooting)
 - [Show your support](#show-your-support)
@@ -37,33 +43,34 @@ Vamos criar umas pipelines de CI/CD com o Azure DevOps? 🚀
 
 </details>
 
-# Usando
+# Visão Geral
 
-## 1. Configurar a conexão de serviço com o GitHub
+## Objetivo
 
-Recomenda-se utilizar um nome genérico, como `github`, para que forks do repositório possam configurar a mesma conexão. Para isso, acesse o painel do **Azure DevOps** e navegue até:
+## Contexto e Motivação
 
-**`Project Settings => Service connections`**
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-Lá, você poderá criar uma nova conexão de serviço com o GitHub.
+# Implementação
 
-No exemplo abaixo, estou utilizando o nome do endpoint como `github`.
+## Pré-requisitos
 
-## 2. Adicionar a configuração no `azure-pipelines.yml`
+## Passo a passo
 
-Inclua o seguinte trecho no início do seu arquivo `azure-pipelines.yml`:
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-```yml
-resources:
-  repositories:
-    - repository: lpmatos
-      type: github
-      endpoint: github
-      name: <your-ref>
-      ref: "refs/heads/master"
-```
+# Referências
 
-Essa configuração tornará os templates deste repositório acessíveis no namespace
+Links relevantes para esse projeto:
+
+- [Metacontroller Docs](https://metacontroller.github.io/metacontroller/intro.html)
+- [What is a Kubernetes Controller?](https://book-v1.book.kubebuilder.io/basics/what_is_a_controller.html)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+# Contributing
+
+Gostaria de contribuir? Isso é ótimo! Temos um guia de contribuição para te ajudar. Clique [aqui](CONTRIBUTING.md) para lê-lo.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
