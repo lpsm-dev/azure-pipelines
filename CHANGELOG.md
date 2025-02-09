@@ -1,3 +1,18 @@
+# Semantic Versioning Changelog
+
+## [1.1.0](https://github.com/lpsm-dev/azure-pipelines/compare/1.0.0...1.1.0) (2025-02-09)
+
+
+### :sparkles: News
+
+* add gitignore ([949492a](https://github.com/lpsm-dev/azure-pipelines/commit/949492aecca92d1bd3eaddc250e760df57414a0f))
+* add gitignore ([f3345c2](https://github.com/lpsm-dev/azure-pipelines/commit/f3345c2b79bc121bc0e7772826b07899421b7b75))
+
+
+### :bug: Fix
+
+* remove renovate ([d796f79](https://github.com/lpsm-dev/azure-pipelines/commit/d796f79d54f00b4bf3b70ff857883df675f2cc40))
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
