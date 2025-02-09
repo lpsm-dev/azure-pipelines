@@ -1,45 +1,21 @@
-<p align="center">
-  <img alt="azure" src="https://cdn.dribbble.com/users/3847465/screenshots/10765125/media/e5f08353be5952c5bfd4a759903d5c5a.gif" width="350px" float="center"/>
-</p>
-
-<h2 align="center">🌊 Shared azure pipelines 🌊</h2>
-
+<!-- BEGIN_DOCS -->
 <div align="center">
 
-[![Semantic Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)]()
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)]()
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
-[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/lpmatos/azure-pipelines)
+<a name="readme-top"></a>
+
+<img src="https://github.com/lpsm-dev/lpsm-dev/blob/c0a3ab229fd29a76e169dbe846412b5132af63b5/.github/assets/azure-pipelines.png" width="350"/>
+
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](https://www.conventionalcommits.org/en/v1.0.0/)
+[![Semantic Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://semantic-release.gitbook.io/semantic-release/usage/configuration)
+[![Built with Devbox](https://jetpack.io/img/devbox/shield_galaxy.svg)](https://jetpack.io/devbox/docs/contributor-quickstart/)
+
+#### Hello Human 👽! Bem-vindo ao meu repositório 👋
+
+Vamos criar umas pipelines de CI/CD com o Azure DevOps? 🚀
 
 </div>
 
----
-
-<p align="center">
-  <img alt="pipelines" src="https://images.ctfassets.net/em6l9zw4tzag/7j79Xx5NqeJlvGj6w98JUX/ecd7317698578b9efa1482154d0188f4/configuringpipeline.gif" width="450px" float="center"/>
-</p>
-
-<p align="center">
-  ✨ A collection of some templates to azure pipelines ✨
-</p>
-
-<p align="center">
-  <a href="#about">About</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#getting-started">Getting Started</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#usage">Usage</a>
-</p>
-
----
-
-## ➤ Getting Started <a name = "getting-started"></a>
-
-If you want contribute on this project, first you need to make a **git clone**:
-
-> 1. git clone --depth 1 https://github.com/lpmatos/azure-pipelines.git -b master
-
-This will give you access to the code on your **local machine**.
-
-## ➤ Description <a name = "description"></a>
+# Description
 
 Azure pipelines is a cloud service that you can use to automatically build and test your code project and make it available to other users. It works with just about any language or project type.
 
@@ -48,6 +24,8 @@ Azure pipelines combines continuous integration (CI) and continuous delivery (CD
 **Azure Marketplace**
 
 - [SonarQube (Hosted version - The version we will use in this blog post)](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarqube)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 # Usage
 
@@ -70,6 +48,8 @@ resources:
 ```
 
 this will make the templates in this repository available in the `lpmatos` namespace.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 # Versionamento
 
