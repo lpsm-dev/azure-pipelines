@@ -5,8 +5,6 @@
 
 <img src="https://github.com/lpsm-dev/lpsm-dev/blob/c0a3ab229fd29a76e169dbe846412b5132af63b5/.github/assets/azure-pipelines.png" width="350"/>
 
-## Azure Pipelines
-
 Hello Human 👽! Bem-vindo ao meu repositório 👋
 
 Vamos criar umas pipelines de CI/CD com o Azure DevOps? 🚀
